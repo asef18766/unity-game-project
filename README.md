@@ -4,7 +4,7 @@
 WIP~~目前只是framework
 
 # bug:
-1. raycast打到東西不會有反應
+nope
 
 # ToDoList
 1. add feature
