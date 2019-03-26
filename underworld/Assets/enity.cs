@@ -2,6 +2,8 @@
 using UnityEngine;
 public class enity : MonoBehaviour {
 	// Use this for initialization
+	public float detect_radius=40;
+	public GameObject sp;
 	Transform tf;
 	Vector2 dir;
 	public enum  walk_dir{UP,DOWN,LEFT,RIGHT};
@@ -68,24 +70,14 @@ public class enity : MonoBehaviour {
 	}
 	void interact()
 	{
-		float le=(float)Math.Sqrt(dir.x*dir.x+dir.y*dir.y);
-		float sin=dir.y/le;
-		float cos=dir.x/le;
-
-		RaycastHit2D[] r={
-			Physics2D.Raycast(new Vector2(tf.position.x,tf.position.y),dir,500,10,0),
-			Physics2D.Raycast(new Vector2(tf.position.x,tf.position.y),new Vector2(cos-sin,cos+sin),500,10,0),
-			Physics2D.Raycast(new Vector2(tf.position.x,tf.position.y),new Vector2(cos+sin,cos-sin),500,10,0)
-			};
-		
-		for( int u=0 ; u!=3 ; ++u )
-			if(r[u].collider)
-			{
-				Debug.DrawLine(tf.position,r[u].transform.position,Color.red,0.1f,true);
-				switch(r[u].collider.tag)
+		Collider2D[] r=Physics2D.OverlapCircleAll(tf.position,detect_radius);
+		for( int u=0 ; u!=r.Length ; ++u )
+			if(r[u])
+				switch(r[u].tag)
 				{
 					case "enemy":
 						Debug.Log("enemy spotted.");
+						sp.transform.position=r[u].transform.position;
 						break;
 					case "npc":
 						Debug.Log("let's having talk.");
@@ -94,6 +86,8 @@ public class enity : MonoBehaviour {
 						Debug.Log("something is on the floor.");
 						break;
 				}
-			}
+		
+		if(r.Length==1)
+			sp.transform.position=tf.position;
 	}
 }
