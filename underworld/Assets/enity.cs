@@ -4,9 +4,11 @@ public class enity : MonoBehaviour {
 	// Use this for initialization
 	public float detect_radius=40;
 	public GameObject sp;
+	
 	Transform tf;
-	Vector2 dir;
+	Vector2 moving_dir;
 	public enum  walk_dir{UP,DOWN,LEFT,RIGHT};
+	
 	void Start () {
 		tf=GetComponent<Transform>();
 	}
@@ -15,6 +17,20 @@ public class enity : MonoBehaviour {
 	void Update () {
 		move(playerControler());
 		interact();
+		spirite_update();
+	}
+	void spirite_update()
+	{
+		Vector2 v2 = Camera.main.ScreenToViewportPoint( Input.mousePosition );
+		v2.x-=0.5f;
+		v2.y-=0.5f;
+		float ang=(float)(Math.Acos(v2.normalized.x)*360/(Math.PI*2));
+		if(v2.y<0)
+			ang=-ang;
+		Debug.Log("ang:"+ang);
+		ang=(ang+360)%360;
+		tf.rotation=Quaternion.Euler(0,0,ang);
+		Debug.Log(v2);
 	}
 	walk_dir[] playerControler()
 	{
@@ -52,20 +68,20 @@ public class enity : MonoBehaviour {
 		for(int u=0;u!=w_dir.Length;++u)
 		{
 			if(w_dir[u]==walk_dir.LEFT)
-				tf.Translate((new Vector3(-1, 0, 0))*Time.deltaTime*tf.localScale.x);
+				tf.position+=((new Vector3(-1, 0, 0))*Time.deltaTime*tf.localScale.x);
 
 			if(w_dir[u]==walk_dir.UP)
-				tf.Translate((new Vector3( 0, 1, 0))*Time.deltaTime*tf.localScale.x);
+				tf.position+=((new Vector3( 0, 1, 0))*Time.deltaTime*tf.localScale.x);
 
 			if(w_dir[u]==walk_dir.RIGHT)
-				tf.Translate((new Vector3( 1, 0, 0))*Time.deltaTime*tf.localScale.x);
+				tf.position+=((new Vector3( 1, 0, 0))*Time.deltaTime*tf.localScale.x);
 
 			if(w_dir[u]==walk_dir.DOWN)
-				tf.Translate((new Vector3( 0,-1, 0))*Time.deltaTime*tf.localScale.x);
+				tf.position+=((new Vector3( 0,-1, 0))*Time.deltaTime*tf.localScale.x);
 		}
 		
-		dir.x=tf.position.x-x;
-		dir.y=tf.position.y-y;
+		moving_dir.x=tf.position.x-x;
+		moving_dir.y=tf.position.y-y;
 		//Debug.Log(dir);
 	}
 	void interact()
@@ -76,7 +92,7 @@ public class enity : MonoBehaviour {
 				switch(r[u].tag)
 				{
 					case "enemy":
-						Debug.Log("enemy spotted.");
+						//Debug.Log("enemy spotted.");
 						sp.transform.position=r[u].transform.position;
 						break;
 					case "npc":
