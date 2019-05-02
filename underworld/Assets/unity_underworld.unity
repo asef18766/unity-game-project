@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 30699757}
   - component: {fileID: 30699760}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: debug_obj
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -245,7 +245,7 @@ GameObject:
   - component: {fileID: 1312955215}
   - component: {fileID: 1312955214}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -527,6 +527,10 @@ Prefab:
     - target: {fileID: 4063241070653710, guid: 83200e3a9d3b9fa4d9fa595dc6d5eae5, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1250583719520746, guid: 83200e3a9d3b9fa4d9fa595dc6d5eae5, type: 2}
+      propertyPath: m_Name
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 61285517594733878, guid: 83200e3a9d3b9fa4d9fa595dc6d5eae5, type: 2}

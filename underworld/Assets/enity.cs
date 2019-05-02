@@ -3,18 +3,21 @@ using UnityEngine;
 public class enity : MonoBehaviour {
 	// Use this for initialization
 	public float detect_radius=40;
+	public float view_radius=360f;
+	public enum  walk_dir{UP,DOWN,LEFT,RIGHT};
 	public GameObject sp;
 	
 	Transform tf;
 	Vector2 moving_dir;
-	public enum  walk_dir{UP,DOWN,LEFT,RIGHT};
 	
-	void Start () {
+	void Start () 
+	{
 		tf=GetComponent<Transform>();
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
 		move(playerControler());
 		interact();
 		spirite_update();
