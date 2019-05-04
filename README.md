@@ -11,7 +11,7 @@ nope
 2. fix bug(s?)
 3. optimize structure
 
-#notice & code rules
+# notice & code rules
 1. class名稱第一個字請用大寫字母
 2. 請用讓人看得懂的名字命名
 3. 自己在做的時候,請創立自己的scence並在裡面工作
