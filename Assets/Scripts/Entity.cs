@@ -2,23 +2,20 @@
 using UnityEngine;
 public class Entity : MonoBehaviour {
 	// Use this for initialization
-	Transform tf;
+	public Transform tf;
 	
-	void Start () 
-	{
-		tf=GetComponent<Transform>();
-	}
+	void Start (){}
 	
 	// Update is called once per frame
 	void Update ()
 	{
 		
 	}
-	protected virtual void spirite_update()
+	public virtual void spirite_update()
 	{
 
 	}
-	protected virtual void interact(string behavior)
+	public virtual void interact(string behavior)
 	{
 		
 	}

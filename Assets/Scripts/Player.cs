@@ -6,22 +6,26 @@ public class Player : Entity {
 	public enum  walk_dir{UP,DOWN,LEFT,RIGHT};
 	public GameObject sp;
 	
-	Transform tf;
 	Vector2 moving_dir;
-	
+	void LoadPlayerData()
+	{
+		PlayerData.LoadPlayerData();
+		tf.position=PlayerData.player_Pos;
+	}
 	void Start () 
 	{
 		tf=GetComponent<Transform>();
+		LoadPlayerData();
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
 		move(playerControler());
-		interact();
+		detect();
 		spirite_update();
 	}
-	protected override void spirite_update()
+	public override void spirite_update()
 	{
 		Vector2 v2 = Camera.main.ScreenToViewportPoint( Input.mousePosition );
 		v2.x-=0.5f;
@@ -86,7 +90,7 @@ public class Player : Entity {
 		moving_dir.y=tf.position.y-y;
 		//Debug.Log(dir);
 	}
-	protected override void interact(string behavior)
+	void detect()
 	{
 		Collider2D[] enemy=Collide.AreaGetCollideByTag(tf.position,detect_radius,Collide.Method.Circle,"enemy");
 		Collider2D[] npc  =Collide.AreaGetCollideByTag(tf.position,detect_radius,Collide.Method.Circle,"npc");
@@ -100,5 +104,8 @@ public class Player : Entity {
 		{
 			sp.transform.position=tf.position;
 		}
+	}
+	public override void interact(string behavior)
+	{
 	}
 }
