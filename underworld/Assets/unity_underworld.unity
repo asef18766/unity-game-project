@@ -333,8 +333,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6b5359bf50dd9f449907566d360b382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detect_radius: 1
+  detect_radius: 1.5
   sp: {fileID: 1312955213}
+  tf: {fileID: 0}
+  moving_dir: {x: 0, y: 0}
 --- !u!1 &1538829680
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,13 +508,11 @@ Prefab:
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 114346411858492538, guid: 83200e3a9d3b9fa4d9fa595dc6d5eae5,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: sp
       value: 
       objectReference: {fileID: 1312955213}
-    - target: {fileID: 114346411858492538, guid: 83200e3a9d3b9fa4d9fa595dc6d5eae5,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: detect_radius
       value: 1
       objectReference: {fileID: 0}
@@ -532,8 +532,18 @@ Prefab:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 114461457559439852, guid: 83200e3a9d3b9fa4d9fa595dc6d5eae5,
+        type: 2}
+      propertyPath: detect_radius
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114461457559439852, guid: 83200e3a9d3b9fa4d9fa595dc6d5eae5,
+        type: 2}
+      propertyPath: sp
+      value: 
+      objectReference: {fileID: 1312955213}
     m_RemovedComponents:
     - {fileID: 61285517594733878, guid: 83200e3a9d3b9fa4d9fa595dc6d5eae5, type: 2}
-    - {fileID: 114346411858492538, guid: 83200e3a9d3b9fa4d9fa595dc6d5eae5, type: 2}
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 83200e3a9d3b9fa4d9fa595dc6d5eae5, type: 2}
   m_IsPrefabParent: 0

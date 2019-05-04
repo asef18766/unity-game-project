@@ -53,7 +53,8 @@
   <ItemGroup>
      <Compile Include="Assets\camera_operation.cs" />
      <Compile Include="Assets\Collide.cs" />
-     <Compile Include="Assets\enity.cs" />
+     <Compile Include="Assets\Entity.cs" />
+     <Compile Include="Assets\Player.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

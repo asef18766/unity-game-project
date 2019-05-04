@@ -1,9 +1,8 @@
-﻿using System;
+using System;
 using UnityEngine;
-public class enity : MonoBehaviour {
+public class Player : Entity {
 	// Use this for initialization
 	public float detect_radius=40;
-	public float view_radius=360f;
 	public enum  walk_dir{UP,DOWN,LEFT,RIGHT};
 	public GameObject sp;
 	
@@ -22,7 +21,7 @@ public class enity : MonoBehaviour {
 		interact();
 		spirite_update();
 	}
-	void spirite_update()
+	protected override void spirite_update()
 	{
 		Vector2 v2 = Camera.main.ScreenToViewportPoint( Input.mousePosition );
 		v2.x-=0.5f;
@@ -87,26 +86,19 @@ public class enity : MonoBehaviour {
 		moving_dir.y=tf.position.y-y;
 		//Debug.Log(dir);
 	}
-	void interact()
+	protected override void interact(string behavior)
 	{
-		Collider2D[] r=Physics2D.OverlapCircleAll(tf.position,detect_radius);
-		for( int u=0 ; u!=r.Length ; ++u )
-			if(r[u])
-				switch(r[u].tag)
-				{
-					case "enemy":
-						//Debug.Log("enemy spotted.");
-						sp.transform.position=r[u].transform.position;
-						break;
-					case "npc":
-						Debug.Log("let's having talk.");
-						break;
-					case "item":
-						Debug.Log("something is on the floor.");
-						break;
-				}
-		
-		if(r.Length==1)
+		Collider2D[] enemy=Collide.AreaGetCollideByTag(tf.position,detect_radius,Collide.Method.Circle,"enemy");
+		Collider2D[] npc  =Collide.AreaGetCollideByTag(tf.position,detect_radius,Collide.Method.Circle,"npc");
+		Collider2D[] item =Collide.AreaGetCollideByTag(tf.position,detect_radius,Collide.Method.Circle,"item");
+
+		if(enemy.Length!=0)
+		{
+			sp.transform.position=enemy[0].transform.position;
+		}
+		else
+		{
 			sp.transform.position=tf.position;
+		}
 	}
 }
