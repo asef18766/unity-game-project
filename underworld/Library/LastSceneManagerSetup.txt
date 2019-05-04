@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/unity_underworld.unity
-  isLoaded: 1
-  isActive: 1
