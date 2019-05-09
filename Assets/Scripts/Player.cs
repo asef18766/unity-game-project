@@ -33,10 +33,8 @@ public class Player : Entity {
 		float ang=(float)(Math.Acos(v2.normalized.x)*360/(Math.PI*2));
 		if(v2.y<0)
 			ang=-ang;
-		Debug.Log("ang:"+ang);
 		ang=(ang+360)%360;
 		tf.rotation=Quaternion.Euler(0,0,ang);
-		Debug.Log(v2);
 	}
 	walk_dir[] playerControler()
 	{
@@ -88,7 +86,6 @@ public class Player : Entity {
 		
 		moving_dir.x=tf.position.x-x;
 		moving_dir.y=tf.position.y-y;
-		//Debug.Log(dir);
 	}
 	void detect()
 	{
