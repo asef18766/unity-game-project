@@ -5,7 +5,7 @@ public class Player : Entity {
 	public float detect_radius=40;
 	public enum  walk_dir{UP,DOWN,LEFT,RIGHT};
 	public GameObject sp;
-	
+	public GameObject bullet_prefab;
 	Vector2 moving_dir;
 	void LoadPlayerData()
 	{
@@ -22,8 +22,16 @@ public class Player : Entity {
 	void Update ()
 	{
 		move(playerControler());
+		shoot();
 		detect();
 		spirite_update();
+	}
+	void shoot()
+	{
+		if(Input.GetMouseButtonDown(0))
+		{
+			Instantiate(bullet_prefab,tf.position,tf.rotation);
+		}
 	}
 	public override void spirite_update()
 	{
@@ -102,7 +110,7 @@ public class Player : Entity {
 			sp.transform.position=tf.position;
 		}
 	}
-	public override void interact(string behavior)
+	public override void interact(string behavior,int[] arg)
 	{
 	}
 }

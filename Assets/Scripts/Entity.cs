@@ -15,7 +15,7 @@ public class Entity : MonoBehaviour {
 	{
 
 	}
-	public virtual void interact(string behavior)
+	public virtual void interact(string behavior,int[] arg)
 	{
 		
 	}
