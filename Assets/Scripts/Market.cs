@@ -23,7 +23,6 @@ public class Market : MonoBehaviour
 		List<string> productNames = new List<string>(info.price.Keys);
 		foreach(string n in productNames)
 		{
-			Debug.Log(n);
 			if(Random.Range(0f, 1f) > 0.5)
 				info.onBuy(n, Random.Range(1, 100));
 			else

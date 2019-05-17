@@ -1,20 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
+using UnityEditor;
+
 
 // use for store object name and price
 [CreateAssetMenu()]
-public class PriceInfo : ScriptableObject {
-	public List<string> keys;
-	public List<int> vals;
-
-	public Dictionary<string, int> price { get; private set; }
-	
-	private void OnEnable()
-	{
-		this.price = new Dictionary<string, int>();
-		for(int i=0, l=this.keys.Count ; i<l ; i++) this.price.Add(this.keys[i], this.vals[i]);
-	}
+public class PriceInfo : ScriptableObject
+{
+	public PriceDict price;
 
 	public void onBuy(string name, int count)
 	{
@@ -39,18 +34,5 @@ public class PriceInfo : ScriptableObject {
 		int old = price[name];
 		price[name] -= (int)(count / old * Random.Range(0.8f, 1.2f));
 		price[name] = Mathf.Max(price[name], 5);
-	}
-
-	// call this to dump the dict value into list (for serialize)
-	public void save()
-	{
-		this.keys.Clear();
-		this.vals.Clear();
-
-		foreach(var kv in this.price)
-		{
-			this.keys.Add(kv.Key);
-			this.vals.Add(kv.Value);
-		}
 	}
 }

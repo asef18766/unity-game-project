@@ -11,3 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd8f29809d2a7647a4d9a050d7b6c0c, type: 3}
   m_Name: NewInfo
   m_EditorClassIdentifier: 
+  price:
+    m_keys:
+    - B
+    - C
+    - A
+    m_values: 140000001300000009000000
