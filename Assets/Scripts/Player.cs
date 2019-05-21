@@ -5,8 +5,10 @@ public class Player : Entity {
 	public float detect_radius=40;
 	public enum  walk_dir{UP,DOWN,LEFT,RIGHT};
 	public GameObject sp;
-	public GameObject bullet_prefab;
+	public static GameObject bullet_prefab=Resources.Load("Bullet") as GameObject;
 	Vector2 moving_dir;
+	public int cur_weapon=0;
+	Weapon_Manager weapon_m;
 	void LoadPlayerData()
 	{
 		PlayerData.LoadPlayerData();
@@ -14,10 +16,17 @@ public class Player : Entity {
 	}
 	void Start () 
 	{
+		weapon_m=Weapon_Manager.GetInstance();
 		tf=GetComponent<Transform>();
 		LoadPlayerData();
 	}
-	
+	void changeweapon()
+	{
+		if(Input.mouseScrollDelta.y!=0)
+		{
+			cur_weapon+=(int)(Input.mouseScrollDelta.y);
+		}
+	}
 	// Update is called once per frame
 	void Update ()
 	{
@@ -25,12 +34,13 @@ public class Player : Entity {
 		shoot();
 		detect();
 		spirite_update();
+		changeweapon();
 	}
 	void shoot()
 	{
 		if(Input.GetMouseButtonDown(0))
 		{
-			Instantiate(bullet_prefab,tf.position,tf.rotation);
+			weapon_m.request(cur_weapon).Act(tf.position,tf.rotation,null);
 		}
 	}
 	public override void spirite_update()
