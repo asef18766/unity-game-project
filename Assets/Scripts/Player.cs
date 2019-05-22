@@ -5,7 +5,7 @@ public class Player : Entity {
 	public float detect_radius=40;
 	public enum  walk_dir{UP,DOWN,LEFT,RIGHT};
 	public GameObject sp;
-	public static GameObject bullet_prefab=Resources.Load("Bullet") as GameObject;
+	public static GameObject bullet_prefab;
 	Vector2 moving_dir;
 	public int cur_weapon=0;
 	Weapon_Manager weapon_m;
@@ -13,12 +13,14 @@ public class Player : Entity {
 	{
 		PlayerData.LoadPlayerData();
 		tf.position=PlayerData.player_Pos;
+		bullet_prefab=Resources.Load("Prefabs/Bullet") as GameObject;
 	}
 	void Start () 
 	{
 		weapon_m=Weapon_Manager.GetInstance();
 		tf=GetComponent<Transform>();
 		LoadPlayerData();
+		
 	}
 	void changeweapon()
 	{
@@ -38,9 +40,9 @@ public class Player : Entity {
 	}
 	void shoot()
 	{
-		if(Input.GetMouseButtonDown(0))
+		if(Input.GetMouseButton(0))
 		{
-			weapon_m.request(cur_weapon).Act(tf.position,tf.rotation,null);
+			weapon_m.request(0).Act(tf.position,tf.rotation,null);
 		}
 	}
 	public override void spirite_update()
