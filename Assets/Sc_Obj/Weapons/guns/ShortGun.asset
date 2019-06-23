@@ -9,10 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31ebbd3c8d338784b8de3f96e52e50f4, type: 3}
-  m_Name: pistol
+  m_Name: ShortGun
   m_EditorClassIdentifier: 
-  dmg: 15
-  reload: 0.5
-  ammo_Capasity: Infinity
-  ammo_remain: Infinity
-  atk_method: {fileID: 11400000, guid: df690d71c75b20f4cb5db08d7bab07ef, type: 2}
+  dmg: 10
+  reload: 0.25
+  ammo_Capasity: 100
+  ammo_remain: 47
+  atk_method: {fileID: 11400000, guid: 8e990b67c50b33d4c867cd364ab2c4dd, type: 2}

@@ -41,7 +41,7 @@ public class Player : Entity {
 	{
 		if(Input.GetMouseButton(0))
 		{
-			weapon_m.request(0).Act(tf.position,tf.rotation,null);
+			weapon_m.request(2).Act(tf.position,tf.rotation,null);
 		}
 	}
 	public override void spirite_update()

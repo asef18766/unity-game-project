@@ -11,7 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31ebbd3c8d338784b8de3f96e52e50f4, type: 3}
   m_Name: AK47
   m_EditorClassIdentifier: 
-  dmg: 10
+  dmg: 20
   reload: 0.25
   ammo_Capasity: 100
-  ammo_remain: 0
+  ammo_remain: 100
+  atk_method: {fileID: 11400000, guid: df690d71c75b20f4cb5db08d7bab07ef, type: 2}
