@@ -71,7 +71,7 @@ MonoBehaviour:
   tf: {fileID: 0}
   atk: 10
   vec: 0.3
-  destroy_time: 5
+  destroy_time: 2
   destroy_f: 0
 --- !u!212 &212464348372930316
 SpriteRenderer:

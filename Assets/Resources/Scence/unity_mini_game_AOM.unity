@@ -210,6 +210,12 @@ Prefab:
       propertyPath: m_Size.y
       value: 0.5621848
       objectReference: {fileID: 0}
+    - target: {fileID: 114461457559439852, guid: dea6f2c4bbf3d1d4097146687ba2663c,
+        type: 2}
+      propertyPath: weapon_m
+      value: 
+      objectReference: {fileID: 11400000, guid: e90a455ffb3fa6b44822372612afa60c,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dea6f2c4bbf3d1d4097146687ba2663c, type: 2}
   m_IsPrefabParent: 0

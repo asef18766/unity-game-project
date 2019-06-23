@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : Entity {
-	public int atk=0;
+	public float atk=0;
 	public float vec=2.0f;
 	public float destroy_time=0.1f;
 	public bool destroy_f=false;
@@ -47,7 +47,7 @@ public class Bullet : Entity {
 		//enemy process
 		for(int u=0;u!=hit_enemy.Length;++u)
 		{
-			hit_enemy[u].GetComponent<Enemy>().interact("HURT",new int[1]{atk});
+			hit_enemy[u].GetComponent<Enemy>().interact("HURT",new int[1]{ (int)atk });
 			destroy_f=true;
 		}
 		

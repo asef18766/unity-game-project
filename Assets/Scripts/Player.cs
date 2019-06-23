@@ -8,7 +8,7 @@ public class Player : Entity {
 	public static GameObject bullet_prefab;
 	Vector2 moving_dir;
 	public int cur_weapon=0;
-	Weapon_Manager weapon_m;
+	public Weapon_Manager weapon_m;
 	void LoadPlayerData()
 	{
 		PlayerData.LoadPlayerData();
@@ -17,7 +17,6 @@ public class Player : Entity {
 	}
 	void Start () 
 	{
-		weapon_m=Weapon_Manager.GetInstance();
 		tf=GetComponent<Transform>();
 		LoadPlayerData();
 		

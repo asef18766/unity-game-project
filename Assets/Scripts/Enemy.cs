@@ -27,6 +27,7 @@ public class Enemy: Entity {
 	}
     void hurt(float dmg)
     {
+        Debug.Log("hurt for "+dmg.ToString()+" point");
         health-=dmg;
     }
 	public override void interact(string behavior,int[] arg)
