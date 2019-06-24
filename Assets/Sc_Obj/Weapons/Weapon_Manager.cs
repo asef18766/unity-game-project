@@ -11,6 +11,8 @@ public class Weapon_Manager:ScriptableObject
     {
         if( id<weapon_list.Count && id>=0)
             return weapon_list[id];
+        
+        Debug.Log("request failed");
         return null;
     }
 }

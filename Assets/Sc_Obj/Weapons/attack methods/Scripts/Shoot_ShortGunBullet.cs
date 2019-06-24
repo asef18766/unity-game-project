@@ -7,12 +7,7 @@ public class Shoot_ShortGunBullet:I_AtkMethod
 {
     void OnEnable()
     {
-        bullet.atk=dmg;
-        __bullet=new Bullet[bullet_amount];
         degree=new float[bullet_amount];
-
-        for(int u=0;u!=bullet_amount;++u)
-            __bullet[u]=bullet;
         
         float ang=extention_angle/(bullet_amount-1);
         degree[0]=0;
@@ -33,12 +28,14 @@ public class Shoot_ShortGunBullet:I_AtkMethod
     public float extention_angle=90;
     public int bullet_amount;
     public Bullet bullet;
-    Bullet[] __bullet;
     float[] degree;
     override public IEnumerator Attack(Vector3 cur_pos,Quaternion dir,IEnumerator callback)
     {
         for(int u=0;u!=bullet_amount;++u)
-            MonoBehaviour.Instantiate(bullet,cur_pos,Quaternion.Euler(dir.eulerAngles+new Vector3(0,0,degree[u])));
+        {
+            Bullet ins=MonoBehaviour.Instantiate(bullet,cur_pos,Quaternion.Euler(dir.eulerAngles+new Vector3(0,0,degree[u])));
+            ins.atk=dmg;
+        }   
         yield return callback;
     }
 }

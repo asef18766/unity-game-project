@@ -26,6 +26,7 @@ public class Player : Entity {
 		if(Input.mouseScrollDelta.y!=0)
 		{
 			cur_weapon+=(int)(Input.mouseScrollDelta.y);
+			cur_weapon=(cur_weapon%weapon_m.weapon_list.Count+weapon_m.weapon_list.Count)%weapon_m.weapon_list.Count;
 		}
 	}
 	// Update is called once per frame
@@ -41,7 +42,7 @@ public class Player : Entity {
 	{
 		if(Input.GetMouseButton(0))
 		{
-			weapon_m.request(2).Act(tf.position,tf.rotation,null);
+			weapon_m.request(cur_weapon).Act(tf.position,tf.rotation,null);
 		}
 	}
 	public override void spirite_update()
