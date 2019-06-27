@@ -14,7 +14,7 @@ MonoBehaviour:
   dmg: 200
   reload: 1
   ammo_Capasity: Infinity
-  ammo_remain: 0
+  ammo_remain: Infinity
   atk_method: {fileID: 11400000, guid: cae4b049e9c0e0846b540c56535decf4, type: 2}
   skin: {fileID: 1189634831683884, guid: 2ee167f521aecb34ca6f906df56afd96, type: 2}
   _I_weapon: {fileID: 0}

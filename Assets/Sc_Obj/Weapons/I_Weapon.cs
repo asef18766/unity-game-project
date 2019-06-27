@@ -17,7 +17,6 @@ public abstract class I_Weapon:ScriptableObject
     {
         if(ammo_remain>0)
         {
-            _I_weapon.GetComponent<WeaponAnimationController>().PlayAnimation();
             Attack(cur_pos,dir,enemy_pos);
         }
     }

@@ -25,6 +25,8 @@ public class Weapon:I_Weapon
         {
             block_coroutine=true;
             ammo_remain--;
+            Debug.Log("attack!!");
+            _I_weapon.GetComponent<WeaponAnimationController>().PlayAnimation();
             CoroutineRunner.RunCoroutine(on_atk(cur_pos,dir));
         }
     }

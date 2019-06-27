@@ -14,6 +14,6 @@ public class I_AtkMethod:ScriptableObject
     }
     virtual public IEnumerator Attack(Vector3 cur_pos,Quaternion dir,IEnumerator callback)
     {
-        yield return new WaitForSeconds(0);
+        yield return callback;
     }
 }
