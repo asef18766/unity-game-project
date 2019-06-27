@@ -9,12 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31ebbd3c8d338784b8de3f96e52e50f4, type: 3}
-  m_Name: ShortGun
+  m_Name: DragonBlade
   m_EditorClassIdentifier: 
-  dmg: 10
-  reload: 0.25
-  ammo_Capasity: 100
-  ammo_remain: 100
-  atk_method: {fileID: 11400000, guid: 9a0be51a7b08d94498b9616546748293, type: 2}
-  skin: {fileID: 1123890408215592, guid: 928eb6e80e59d9e48b45a7e3124ce8be, type: 2}
+  dmg: 200
+  reload: 1
+  ammo_Capasity: Infinity
+  ammo_remain: 0
+  atk_method: {fileID: 11400000, guid: cae4b049e9c0e0846b540c56535decf4, type: 2}
+  skin: {fileID: 1189634831683884, guid: 2ee167f521aecb34ca6f906df56afd96, type: 2}
   _I_weapon: {fileID: 0}

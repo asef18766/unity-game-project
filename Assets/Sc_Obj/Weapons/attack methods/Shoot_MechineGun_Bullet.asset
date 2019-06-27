@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccc7786c672ccd743b8e321fa047cb21, type: 3}
   m_Name: Shoot_MechineGun_Bullet
   m_EditorClassIdentifier: 
-  extention_angle: 90
-  bullet_amount: 0
-  bullet: {fileID: 0}
+  extention_angle: 3
+  bullet_amount: 3
+  bullet: {fileID: 114310614302057958, guid: 9b16274d825dbe749b86d96605a176e8, type: 2}

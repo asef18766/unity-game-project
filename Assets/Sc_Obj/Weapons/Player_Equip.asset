@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Name: Player_Equip
   m_EditorClassIdentifier: 
   weapon_list:
-  - {fileID: 11400000, guid: b2965edbdfe433b4189950fcef6a9f53, type: 2}
   - {fileID: 11400000, guid: 3f19cdff4ca6db5448e0e6fd560795ee, type: 2}
+  - {fileID: 11400000, guid: b2965edbdfe433b4189950fcef6a9f53, type: 2}
+  - {fileID: 11400000, guid: 422b5c63f93c8f0479164ded1c7bcd11, type: 2}
   - {fileID: 11400000, guid: 04f104b22c77cc84d98270dad345872e, type: 2}
+  - {fileID: 11400000, guid: ad99dc05d1639f948a267e6d99644d93, type: 2}
+  - {fileID: 11400000, guid: 3641df55ba57cd240a194615c77a10ab, type: 2}
+  - {fileID: 11400000, guid: 4983d0b4ddfc6d245b639392fc794854, type: 2}

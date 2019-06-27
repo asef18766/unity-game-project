@@ -15,4 +15,6 @@ MonoBehaviour:
   reload: 0.25
   ammo_Capasity: 100
   ammo_remain: 100
-  atk_method: {fileID: 11400000, guid: df690d71c75b20f4cb5db08d7bab07ef, type: 2}
+  atk_method: {fileID: 11400000, guid: bf9c8da392c1788418c395e2b352dce4, type: 2}
+  skin: {fileID: 1383117532926638, guid: 23fc85c4d1e026e4ea82d79c3f499c27, type: 2}
+  _I_weapon: {fileID: 0}
