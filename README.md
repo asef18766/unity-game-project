@@ -18,6 +18,6 @@ nope
 4. 記得幫自己寫的程式Debug並盡量包成一個可以獨立運行的物件
 5. 驗收時間是在5/18,別忘了歐OwO
 
-#plugin
+# plugin
 1. fungus
 2. YamlDotNet
