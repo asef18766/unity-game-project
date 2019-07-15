@@ -21,3 +21,7 @@ nope
 # plugin
 1. fungus
 2. YamlDotNet
+
+# disguess result
+1. mission system
+2. event system
