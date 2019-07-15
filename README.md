@@ -34,6 +34,9 @@ WIP~~目前只是framework
 >  > 5. decorating scence
 >  > 6. make mini games
 >  > 7. <img src="https://i.kym-cdn.com/photos/images/facebook/001/444/743/e63.png" width="20%">
+>  ## for 美術組
+>  > 1. draw tiles & sprites texture on need<br>
+>  >※some example of "tile": <a href="https://opengameart.org/art-search-advanced?keys=&field_art_type_tid%5B%5D=9&sort_by=count&sort_order=DESC">reference</a>
   
 ## notice & code rules
 1. class名稱第一個字請用大寫字母
