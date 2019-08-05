@@ -37,6 +37,7 @@ GameObject:
   - component: {fileID: 4396418287158988}
   - component: {fileID: 95343239590244556}
   - component: {fileID: 114185914100717440}
+  - component: {fileID: 114327259620311676}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Untagged
@@ -44,6 +45,35 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1852774672208434
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4323951886661938}
+  - component: {fileID: 114051253649855852}
+  m_Layer: 0
+  m_Name: Sphere
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4323951886661938
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1852774672208434}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.28, y: 1.43, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4903722672214168}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4396418287158988
 Transform:
   m_ObjectHideFlags: 1
@@ -67,7 +97,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.14, y: 0.02, z: 0}
   m_LocalScale: {x: 0.03448058, y: 0.03448058, z: 0.03448058}
-  m_Children: []
+  m_Children:
+  - {fileID: 4323951886661938}
   m_Father: {fileID: 4396418287158988}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -88,6 +119,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114051253649855852
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1852774672208434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80406fe82fc03db488b7142ca1ff19c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon_arg: {fileID: 11400000, guid: a5194ccad76eeda46adc59aad5d4a190, type: 2}
 --- !u!114 &114185914100717440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -99,6 +142,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82eedca2342c3de49b18205f646aa313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114327259620311676
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1505912007099430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcbcd9619927ce64ea07825a8403a7de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shooter: {fileID: 114051253649855852}
 --- !u!212 &212857658026177902
 SpriteRenderer:
   m_ObjectHideFlags: 1

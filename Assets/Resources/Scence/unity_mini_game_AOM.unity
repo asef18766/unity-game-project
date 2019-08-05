@@ -227,7 +227,7 @@ Prefab:
     - target: {fileID: 114461457559439852, guid: dea6f2c4bbf3d1d4097146687ba2663c,
         type: 2}
       propertyPath: detect_radius
-      value: 3
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 61285517594733878, guid: dea6f2c4bbf3d1d4097146687ba2663c, type: 2}

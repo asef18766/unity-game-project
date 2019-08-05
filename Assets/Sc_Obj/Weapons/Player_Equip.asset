@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Name: Player_Equip
   m_EditorClassIdentifier: 
   weapon_list:
-  - {fileID: 11400000, guid: 3f19cdff4ca6db5448e0e6fd560795ee, type: 2}
-  - {fileID: 11400000, guid: b2965edbdfe433b4189950fcef6a9f53, type: 2}
-  - {fileID: 11400000, guid: 422b5c63f93c8f0479164ded1c7bcd11, type: 2}
-  - {fileID: 11400000, guid: 04f104b22c77cc84d98270dad345872e, type: 2}
-  - {fileID: 11400000, guid: ad99dc05d1639f948a267e6d99644d93, type: 2}
-  - {fileID: 11400000, guid: 3641df55ba57cd240a194615c77a10ab, type: 2}
-  - {fileID: 11400000, guid: 4983d0b4ddfc6d245b639392fc794854, type: 2}
+  - {fileID: 1505912007099430, guid: 8c8cc65d5b47eb84f9e62acde4c893ac, type: 2}
+  - {fileID: 1383117532926638, guid: 23fc85c4d1e026e4ea82d79c3f499c27, type: 2}
+  - {fileID: 1051705386524854, guid: f369d745eaa95f140bfac43626f05b41, type: 2}
+  - {fileID: 1123890408215592, guid: 928eb6e80e59d9e48b45a7e3124ce8be, type: 2}
+  - {fileID: 1765965056165878, guid: 71db0984718cd324082b5f9ce03ca6ac, type: 2}
+  - {fileID: 1112562079178382, guid: 5f294bd77f2976349a3a26f7bcc84597, type: 2}
+  - {fileID: 1189634831683884, guid: 2ee167f521aecb34ca6f906df56afd96, type: 2}

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4927906060751272}
   - component: {fileID: 95875659676176964}
   - component: {fileID: 114969563955853974}
+  - component: {fileID: 114636376069478962}
   m_Layer: 0
   m_Name: ShotGun
   m_TagString: Untagged
@@ -44,6 +45,35 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1714142789390938
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4429898843143496}
+  - component: {fileID: 114525980533129958}
+  m_Layer: 0
+  m_Name: Sphere
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4429898843143496
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1714142789390938}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.46, y: 0.42, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4964327440274176}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4927906060751272
 Transform:
   m_ObjectHideFlags: 1
@@ -67,7 +97,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.186, y: -0.057, z: 0}
   m_LocalScale: {x: 0.09267783, y: 0.09267783, z: 0.09267783}
-  m_Children: []
+  m_Children:
+  - {fileID: 4429898843143496}
   m_Father: {fileID: 4927906060751272}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -88,6 +119,30 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114525980533129958
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1714142789390938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80406fe82fc03db488b7142ca1ff19c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon_arg: {fileID: 11400000, guid: 5c2903d5483ae4648975bb851ac1e5b6, type: 2}
+--- !u!114 &114636376069478962
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1123890408215592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcbcd9619927ce64ea07825a8403a7de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shooter: {fileID: 114525980533129958}
 --- !u!114 &114969563955853974
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -8,13 +8,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31ebbd3c8d338784b8de3f96e52e50f4, type: 3}
+  m_Script: {fileID: 11500000, guid: e76b5bf74ca47334b863b8a68291dd66, type: 3}
   m_Name: Pistol
   m_EditorClassIdentifier: 
-  dmg: 15
+  dmg: 10
   reload: 0.5
   ammo_Capasity: Infinity
   ammo_remain: Infinity
   atk_method: {fileID: 11400000, guid: df690d71c75b20f4cb5db08d7bab07ef, type: 2}
-  skin: {fileID: 1505912007099430, guid: 8c8cc65d5b47eb84f9e62acde4c893ac, type: 2}
-  _I_weapon: {fileID: 0}

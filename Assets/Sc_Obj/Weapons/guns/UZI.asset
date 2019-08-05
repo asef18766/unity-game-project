@@ -8,13 +8,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31ebbd3c8d338784b8de3f96e52e50f4, type: 3}
+  m_Script: {fileID: 11500000, guid: e76b5bf74ca47334b863b8a68291dd66, type: 3}
   m_Name: UZI
   m_EditorClassIdentifier: 
   dmg: 5
   reload: 0.05
   ammo_Capasity: 200
-  ammo_remain: 200
+  ammo_remain: 178
   atk_method: {fileID: 11400000, guid: 6c3a94dbea904664cb2e8ce2a760f971, type: 2}
-  skin: {fileID: 1051705386524854, guid: f369d745eaa95f140bfac43626f05b41, type: 2}
-  _I_weapon: {fileID: 0}

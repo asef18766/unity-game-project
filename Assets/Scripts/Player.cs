@@ -9,36 +9,29 @@ public class Player : Entity {
 	Vector2 moving_dir;
 	public int cur_weapon_id=0;
 	public Weapon_Manager weapon_m;
-	GameObject cur_weapon;
+	Weapon cur_weapon;
 	void LoadPlayerData()
 	{
 		PlayerData.LoadPlayerData();
 		tf.position=PlayerData.player_Pos;
 		bullet_prefab=Resources.Load("Prefabs/Bullet") as GameObject;
 	}
-	void SetUpWeapon()
-	{
-		GameObject i_weapon=Instantiate(weapon_m.weapon_list[cur_weapon_id].skin,tf);
-		cur_weapon=i_weapon;
-		weapon_m.weapon_list[cur_weapon_id]._I_weapon=cur_weapon;
-	}
 	void Start () 
 	{
 		tf=GetComponent<Transform>();
 		LoadPlayerData();
-		SetUpWeapon();
+		cur_weapon=weapon_m.SetUpWeaponInstance(cur_weapon_id,this.gameObject);
 	}
-	void changeweapon()
+	void SwitchWeapon()
 	{
 		if(Input.mouseScrollDelta.y!=0)
 		{
+			int WP_Count=weapon_m.GetWeaponAmount();
 			cur_weapon_id+=(int)(Input.mouseScrollDelta.y);
-			cur_weapon_id=(cur_weapon_id%weapon_m.weapon_list.Count+weapon_m.weapon_list.Count)%weapon_m.weapon_list.Count;
+			cur_weapon_id=(cur_weapon_id+WP_Count)%WP_Count;
 
-			if(cur_weapon!=null)
-				Destroy(cur_weapon);
 			//Instantiate Weapon to Scence
-			SetUpWeapon();
+			cur_weapon=weapon_m.SetUpWeaponInstance(cur_weapon_id,this.gameObject);
 		}
 	}
 	// Update is called once per frame
@@ -48,13 +41,13 @@ public class Player : Entity {
 		shoot();
 		detect();
 		spirite_update();
-		changeweapon();
+		SwitchWeapon();
 	}
 	void shoot()
 	{
 		if(Input.GetMouseButton(0))
 		{
-			weapon_m.request(cur_weapon_id).Act(tf.position,tf.rotation,null);
+			cur_weapon.Attack();
 		}
 	}
 	public override void spirite_update()
