@@ -2,7 +2,6 @@ using System;
 using UnityEngine;
 public class Player : Entity {
 	// Use this for initialization
-	public float detect_radius=40;
 	public enum  walk_dir{UP,DOWN,LEFT,RIGHT};
 	public GameObject sp;
 	public static GameObject bullet_prefab;
@@ -39,7 +38,6 @@ public class Player : Entity {
 	{
 		move(playerControler());
 		shoot();
-		detect();
 		spirite_update();
 		SwitchWeapon();
 	}
@@ -112,22 +110,18 @@ public class Player : Entity {
 		moving_dir.x=tf.position.x-x;
 		moving_dir.y=tf.position.y-y;
 	}
-	void detect()
+	void OnCollisionStay2D(Collision2D collisionInfo)
 	{
-		Collider2D[] enemy=Collide.AreaGetCollideByTag(tf.position,detect_radius,Collide.Method.Circle,"enemy");
-		Collider2D[] npc  =Collide.AreaGetCollideByTag(tf.position,detect_radius,Collide.Method.Circle,"npc");
-		Collider2D[] item =Collide.AreaGetCollideByTag(tf.position,detect_radius,Collide.Method.Circle,"item");
 
-		if(enemy.Length!=0)
+		if(collisionInfo.gameObject.tag=="Npc")
 		{
-			sp.transform.position=enemy[0].transform.position;
+			sp.transform.position=collisionInfo.transform.position;
 		}
-		else
-		{
-			sp.transform.position=tf.position;
-		}
-	}
-	public override void interact(string behavior,int[] arg)
-	{
+			
+
+		Npc interact_npc=collisionInfo.gameObject.GetComponent<Npc>();
+;
+		if(interact_npc!=null&&Input.GetKeyDown(KeyCode.Space))
+			Fungus.Flowchart.BroadcastFungusMessage("interact:"+interact_npc.NpcName);
 	}
 }
