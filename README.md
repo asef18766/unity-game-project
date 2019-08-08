@@ -26,7 +26,7 @@ WIP~~目前只是framework
 >  > 6. assemble all the others part
 >  > 7. make mini games
 >  > 8. <img src="https://i.kym-cdn.com/photos/images/facebook/001/444/743/e63.png" width="20%">
->  ## for 台獨佬
+>  ## for 盧昭華
 >  > 1. complete project scripts
 >  > 2. define YAML behaviors
 >  > 3. write YAML npc scripts
