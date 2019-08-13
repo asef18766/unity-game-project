@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e76b5bf74ca47334b863b8a68291dd66, type: 3}
-  m_Name: Pistol
+  m_Name: pistol
   m_EditorClassIdentifier: 
   dmg: 10
   reload: 0.5
