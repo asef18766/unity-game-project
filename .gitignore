@@ -56,4 +56,5 @@ sysinfo.txt
 crashlytics-build.properties
 
 # scenes for test
-Scene/*test
+**/Scene/test*
+
