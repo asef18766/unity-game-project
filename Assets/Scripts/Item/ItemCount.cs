@@ -10,12 +10,35 @@ public class ItemCount : ScriptableObject
 	public int id { get { return item.getId(); } }
 	private Item item;
 
-
-	public bool same(ItemCount other)
+	#region overload_operators
+	public static bool operator==(ItemCount x,ItemCount y)
 	{
-		return item.getId() == other.id;
+		return x.count == y.count && x.id==y.id;
+	}
+	
+	public static bool operator!=(ItemCount x,ItemCount y)
+	{
+		return x.count != y.count || x.id!=y.id;
+	}
+	public static bool operator>(ItemCount x,ItemCount y)
+	{
+		return x.count > y.count && x.id==y.id;
+	}
+	public static bool operator<(ItemCount x,ItemCount y)
+	{
+		return x.count < y.count && x.id==y.id;
+	}
+	public static bool operator>=(ItemCount x,ItemCount y)
+	{
+		return x.count >= y.count && x.id==y.id;
+	}
+	public static bool operator<=(ItemCount x,ItemCount y)
+	{
+		return x.count <= y.count && x.id==y.id;
 	}
 
+	#endregion
+	
 	public bool use()
 	{
 		if(item == null || count == 0)
