@@ -8,11 +8,13 @@ public class NPC_Get_Item : Command {
 	Flowchart flag;
 	public override void OnEnter()
 	{
+		//WIP
+		/* 
 		foreach(var it in tar_item)
 		{
 			if(!p_inv.checkItem(it))
-				flag.GetBooleanVariable()
-		}
+				flag.GetBooleanVariable("123");
+		}*/
 		
 	}
 
