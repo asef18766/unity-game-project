@@ -74,10 +74,8 @@ public class Player : Entity {
 	#region collision_behavior
 		void OnCollisionStay2D(Collision2D collisionInfo)
 		{
-			
 			if(collisionInfo.gameObject.tag=="Npc")
 			{
-				sp.transform.position=collisionInfo.transform.position;
 				Npc interact_npc=collisionInfo.gameObject.GetComponent<Npc>();
 
 				if(interact_npc!=null&&Input.GetKeyDown(KeyCode.Space))
@@ -92,8 +90,6 @@ public class Player : Entity {
 		{
 			if(collisionInfo.gameObject.tag=="item")
 			{
-				sp.transform.position=collisionInfo.transform.position;
-				
 				if(Input.GetKeyDown(KeyCode.Space))
 				{
 					if(collisionInfo.gameObject.GetComponent<Item>()!=null)
@@ -110,8 +106,6 @@ public class Player : Entity {
 			}
 		}
 	#endregion
-	
-	public GameObject sp;
 	
 	void LoadPlayerData()
 	{

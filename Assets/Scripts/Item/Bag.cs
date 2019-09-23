@@ -6,10 +6,12 @@ using UnityEngine;
 public class Bag : MonoBehaviour
 {
 	private Dictionary<int, ItemCount> content;
+	private static ItemInstanceManager id_controller;
 
 	void Start()
 	{
 		content = new Dictionary<int, ItemCount>();
+		id_controller=ItemInstanceManager.Get_Id_Manager_Instance();
 	}
 
 	public List<ItemCount> getItemList()
@@ -53,8 +55,9 @@ public class Bag : MonoBehaviour
 	// insert n items into bag
 	public bool updateItem(Item other, int n)
 	{
-		if(content.ContainsKey(other.getId()))
-			return content[other.getId()].updateCount(n);
+		int item_id=id_controller.GetIdByItem(other);
+		if(content.ContainsKey(item_id))
+			return content[item_id].updateCount(n);
 		else
 		{
 			ItemCount ic = ScriptableObject.CreateInstance<ItemCount>();
