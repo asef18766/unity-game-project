@@ -503,7 +503,6 @@ GameObject:
   - component: {fileID: 814583813}
   - component: {fileID: 814583812}
   - component: {fileID: 814583811}
-  - component: {fileID: 814583810}
   m_Layer: 0
   m_Name: Item
   m_TagString: item
@@ -511,20 +510,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &814583810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 814583809}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcb16afa13019924aa96e90f3c7f62f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 0
-  help_text: i am coffee~~
-  usage: {fileID: 0}
 --- !u!61 &814583811
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -746,6 +731,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 991cf9561ca1b0d4eac909aa2ee605c2, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &854704897 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114423875406386730, guid: 991cf9561ca1b0d4eac909aa2ee605c2,
+    type: 2}
+  m_PrefabInternal: {fileID: 854704896}
+  m_Script: {fileID: 11500000, guid: 7a334fe2ffb574b3583ff3b18b4792d3, type: 3}
 --- !u!1 &863437287
 GameObject:
   m_ObjectHideFlags: 0
@@ -1349,7 +1340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 0}
+  selectedFlowchart: {fileID: 854704897}
 --- !u!4 &1537034976
 Transform:
   m_ObjectHideFlags: 1
