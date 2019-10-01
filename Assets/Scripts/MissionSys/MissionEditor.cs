@@ -7,8 +7,17 @@ using System.Collections.Generic;
 public class MissionEditor : Editor
 {
     Mission mission;
-    void OnEnable(){
+    public void OnEnable(){
         mission=(Mission)target;
-        
     }
+    public override void OnInspectorGUI () {
+		serializedObject.Update();
+		EditorGUILayout.PropertyField(serializedObject.FindProperty("mission_name"),true);
+		EditorGUILayout.PropertyField(serializedObject.FindProperty("cur_state"),true);
+		EditorGUILayout.PropertyField(serializedObject.FindProperty("pre_request"),true);
+		EditorGUILayout.PropertyField(serializedObject.FindProperty("requirements"),true);
+		EditorGUILayout.PropertyField(serializedObject.FindProperty("reward_action"),true);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("rediraction"),true);
+		serializedObject.ApplyModifiedProperties();
+	}
 }

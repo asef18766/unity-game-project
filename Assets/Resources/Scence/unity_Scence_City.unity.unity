@@ -253,12 +253,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1429070436}
   m_Script: {fileID: 11500000, guid: 3d3d73aef2cfc4f51abf34ac00241f60, type: 3}
---- !u!114 &256201800 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114423875406386730, guid: 991cf9561ca1b0d4eac909aa2ee605c2,
-    type: 2}
-  m_PrefabInternal: {fileID: 1429070436}
-  m_Script: {fileID: 11500000, guid: 7a334fe2ffb574b3583ff3b18b4792d3, type: 3}
 --- !u!4 &271626815 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4011924135459874, guid: 991cf9561ca1b0d4eac909aa2ee605c2,
@@ -291,7 +285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 256201800}
+  selectedFlowchart: {fileID: 0}
 --- !u!4 &295438669
 Transform:
   m_ObjectHideFlags: 1
@@ -869,6 +863,16 @@ Prefab:
         type: 2}
       propertyPath: storyText
       value: "\u6211\u559C\u6B61\u505A\u9EB5\u5305"
+      objectReference: {fileID: 0}
+    - target: {fileID: 61299771802773586, guid: 991cf9561ca1b0d4eac909aa2ee605c2,
+        type: 2}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 3.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 61299771802773586, guid: 991cf9561ca1b0d4eac909aa2ee605c2,
+        type: 2}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 6.49
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 991cf9561ca1b0d4eac909aa2ee605c2, type: 2}

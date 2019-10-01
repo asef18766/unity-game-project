@@ -2,9 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Fungus;
-[CreateAssetMenu(menuName= "Mission/Create Mission")]
 [System.Serializable]
-public class Mission : ScriptableObject {
+public class MissionDes{
+	[SerializeField]public Mission.MissionState state;
+	[SerializeField]public Flowchart fc;
+	[SerializeField]public string block_name;
+}
+
+[System.Serializable]
+public class Mission : MonoBehaviour {
+	
 	public enum MissionState
 	{
 		Locked,
@@ -12,13 +19,29 @@ public class Mission : ScriptableObject {
 		OnGoing,
 		Passed
 	}
-	public MissionState cur_state=MissionState.Locked;
+	[SerializeField] public string mission_name="";
+	[SerializeField] public MissionState cur_state=MissionState.Locked;
 	[SerializeField] List<Mission> pre_request;
 	[SerializeField] List<I_Requirement> requirements;
 	[SerializeField] List<I_Reward> reward_action;
 	
-	[SerializeField] Dictionary<MissionState,List<KeyValuePair<Flowchart,string> > > rediraction;
+	[SerializeField] List<MissionDes> rediraction;
+
+	[SerializeField] public Dictionary<Mission.MissionState,Block> _mapping_state=new Dictionary<MissionState, Block>();
 	
+	void Start()
+	{
+		foreach(var i in rediraction)
+		{
+			if(i.fc.FindBlock(i.block_name)==null)
+			{
+				Debug.Log("null block finded");
+			}
+			_mapping_state.Add(i.state,i.fc.FindBlock(i.block_name));
+			Debug.Log(_mapping_state[i.state].ToString());
+		}
+			
+	}
 	public bool check_pre_request()
 	{
 		if(cur_state==MissionState.UnLocked)
