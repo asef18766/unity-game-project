@@ -21,6 +21,7 @@ namespace Fungus
         [SerializeField] protected List<Mission> dest=new List<Mission>();
 
 		private static List<Menu> _pre_command=new List<Menu>();
+		private static List<Block> _controlled_block=new List<Block>();
 
 		// Use this for initialization
 		void _create_menu_command(string menu_dialog,Block targetBlock)
@@ -43,7 +44,7 @@ namespace Fungus
 				Debug.Log("null Block");
 				return;
 			}
-
+			_controlled_block.Add(ParentBlock);
 			_pre_command.Add(m);
 			int cur_command=ParentBlock.CommandList.FindIndex(item=> item==ParentBlock.ActiveCommand);
 			ParentBlock.CommandList.Insert(cur_command,m);
@@ -52,7 +53,15 @@ namespace Fungus
 		public static void remove_precommand()
 		{
 			foreach(var i in _pre_command)
-				DestroyImmediate(i);
+			{
+				foreach(var b in _controlled_block)
+					if(b.CommandList.Remove(i))
+						break;
+				DestroyImmediate(i.gameObject);
+			}
+			_controlled_block.Clear();
+			_pre_command.Clear();
+				
 		}
 		public override void OnEnter()
 		{
@@ -61,7 +70,6 @@ namespace Fungus
 				i.check_pre_request();
 				if(i.cur_state==Mission.MissionState.Locked)
 					continue;
-				
 				switch(i.cur_state)
 				{
 					case Mission.MissionState.UnLocked:
@@ -78,7 +86,6 @@ namespace Fungus
 					default:
 					break;
 				}
-				
 			}
 			Continue();
 		}

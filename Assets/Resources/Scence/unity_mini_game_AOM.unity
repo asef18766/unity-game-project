@@ -1465,6 +1465,8 @@ GameObject:
   - component: {fileID: 1347075470}
   - component: {fileID: 1347075476}
   - component: {fileID: 1347075472}
+  - component: {fileID: 1347075477}
+  - component: {fileID: 1347075478}
   m_Layer: 0
   m_Name: Mission01-Flowchart
   m_TagString: Untagged
@@ -1525,7 +1527,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 261
-    y: 76
+    y: 75
     width: 131
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -1536,6 +1538,7 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 1347075470}
+  - {fileID: 1347075478}
   - {fileID: 1347075472}
 --- !u!114 &1347075472
 MonoBehaviour:
@@ -1597,8 +1600,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 56
-    y: 79
+    x: 54
+    y: 81
     width: 143
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -1609,6 +1612,7 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 1347075473}
+  - {fileID: 1347075477}
   - {fileID: 1347075476}
 --- !u!114 &1347075475
 MonoBehaviour:
@@ -1637,7 +1641,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 1347075471}
   selectedCommands:
-  - {fileID: 1347075472}
+  - {fileID: 1347075478}
   variables: []
   description: 
   stepPause: 0
@@ -1669,6 +1673,34 @@ MonoBehaviour:
     stringVal: 
   startIndex: 0
   callMode: 0
+--- !u!114 &1347075477
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1347075468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac03a7003fc0ce443846b74393a6c9d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 7
+  indentLevel: 0
+  target_mission: {fileID: 1217493347}
+--- !u!114 &1347075478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1347075468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50edd4c1ee3c5ce4cbf9734656b86cab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 8
+  indentLevel: 0
+  target_mission: {fileID: 1217493347}
 --- !u!1 &1352749635
 GameObject:
   m_ObjectHideFlags: 0
@@ -1838,7 +1870,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 854704897}
+  selectedFlowchart: {fileID: 1347075475}
 --- !u!4 &1537034976
 Transform:
   m_ObjectHideFlags: 1

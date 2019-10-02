@@ -44,14 +44,20 @@ public class Mission : MonoBehaviour {
 	}
 	public bool check_pre_request()
 	{
-		if(cur_state==MissionState.UnLocked)
+		if(cur_state==MissionState.Passed)
 			return true;
 		
-		foreach(var i in pre_request)
-			if(i.cur_state!=MissionState.Passed)
-				return false;
-		cur_state=MissionState.UnLocked;
-		return true;
+		if(cur_state==MissionState.Locked)
+		{
+			foreach(var i in pre_request)
+				if(i.cur_state!=MissionState.Passed)
+					return false;
+			cur_state=MissionState.UnLocked;
+			return true;
+		}
+		
+		return false;
+		
 	}
 	public void accept_mission()
 	{
@@ -62,16 +68,21 @@ public class Mission : MonoBehaviour {
 		}
 		cur_state=MissionState.OnGoing;
 	}
-	public void complete_mission()
+	public bool complete_mission()
 	{
 		if(cur_state!=MissionState.OnGoing)
 		{
 			Debug.Log("error use of complete mission");
-			return;
+			return false;
 		}
+		foreach(var i in requirements)
+			if(!i.check_require())
+				return false;
+		
 		cur_state=MissionState.Passed;
 
 		foreach(var i in reward_action)
 			i.send_reward();
+		return true;
 	}
 }

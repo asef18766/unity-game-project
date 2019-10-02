@@ -3,5 +3,5 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class I_Requirement : ScriptableObject {
-    abstract public void check_require();
+    abstract public bool check_require();
 }
