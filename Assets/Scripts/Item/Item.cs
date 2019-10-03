@@ -16,10 +16,6 @@ public class Item : ScriptableObject {
 	{
 		return ((other is Item) && (this == ((Item) other)));
 	}
-	public override int GetHashCode()
-	{
-		return help_text.GetHashCode()^usage.GetHashCode()^item_texture.GetHashCode();
-	}
 	#endregion
 	[SerializeField][TextArea] string help_text;
 	[SerializeField] I_ItemUsage usage=null;

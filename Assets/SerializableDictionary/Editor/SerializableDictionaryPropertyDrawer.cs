@@ -5,7 +5,13 @@ using UnityEditor;
 using System.Reflection;
 using System;
 
+
+[CustomPropertyDrawer(typeof(Bag.Num_Item_Dictionary))]
+public class NumItemDictionaryDrawer : SerializableDictionaryPropertyDrawer {}
+
 [CustomPropertyDrawer(typeof(PriceDict))]
+public class PriceDictionaryDrawer : SerializableDictionaryPropertyDrawer {}
+
 public class SerializableDictionaryPropertyDrawer : PropertyDrawer
 {
 	const string KeysFieldName = "m_keys";

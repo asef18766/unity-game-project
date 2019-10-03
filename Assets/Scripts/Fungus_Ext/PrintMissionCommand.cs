@@ -30,9 +30,6 @@ namespace Fungus
 			{
 				menuDialog.SetActive(true);
 
-				var flowchart = GetFlowchart();
-				string displayText = flowchart.SubstituteVariables(text);
-
 				menuDialog.AddOption(menu_dialog, true, false, targetBlock);
 			}
 		}

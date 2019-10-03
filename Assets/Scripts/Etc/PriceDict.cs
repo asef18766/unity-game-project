@@ -5,6 +5,3 @@ using UnityEditor;
 
 [System.Serializable]
 public class PriceDict : SerializableDictionary<string, int> { }
-
-// [CustomPropertyDrawer(typeof(PriceDict))]
-// public class PriceDictPropertyDrawer : SerializableDictionaryPropertyDrawer {}

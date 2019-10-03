@@ -38,7 +38,6 @@ public class Mission : MonoBehaviour {
 				Debug.Log("null block finded");
 			}
 			_mapping_state.Add(i.state,i.fc.FindBlock(i.block_name));
-			Debug.Log(_mapping_state[i.state].ToString());
 		}
 			
 	}
