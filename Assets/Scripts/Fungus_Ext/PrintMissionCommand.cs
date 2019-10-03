@@ -19,49 +19,22 @@ namespace Fungus
 
 		[Tooltip("Notes about the option text for other authors, localization, etc.")]
         [SerializeField] protected List<Mission> dest=new List<Mission>();
-
-		private static List<Menu> _pre_command=new List<Menu>();
-		private static List<Block> _controlled_block=new List<Block>();
+		[SerializeField] protected MenuDialog setMenuDialog;
+		public MenuDialog SetMenuDialog  { get { return setMenuDialog; } set { setMenuDialog = value; } }
 
 		// Use this for initialization
 		void _create_menu_command(string menu_dialog,Block targetBlock)
 		{
-			GameObject g=new GameObject();
-			g.transform.parent=GetFlowchart().gameObject.transform;
-			
-			Menu m=g.AddComponent<Menu>();
+			var menuDialog = MenuDialog.GetMenuDialog();
+			if (menuDialog != null)
+			{
+				menuDialog.SetActive(true);
 
-			if(m==null)
-			{
-				Debug.Log("null menu");
-				return;
+				var flowchart = GetFlowchart();
+				string displayText = flowchart.SubstituteVariables(text);
+
+				menuDialog.AddOption(menu_dialog, true, false, targetBlock);
 			}
-			m.SetStandardText(menu_dialog);
-			m.targetBlock=targetBlock;
-			
-			if(m.targetBlock==null)
-			{
-				Debug.Log("null Block");
-				return;
-			}
-			_controlled_block.Add(ParentBlock);
-			_pre_command.Add(m);
-			int cur_command=ParentBlock.CommandList.FindIndex(item=> item==ParentBlock.ActiveCommand);
-			ParentBlock.CommandList.Insert(cur_command,m);
-			ParentBlock.CommandList[ParentBlock.CommandList.Count-1].enabled=true;
-		}
-		public static void remove_precommand()
-		{
-			foreach(var i in _pre_command)
-			{
-				foreach(var b in _controlled_block)
-					if(b.CommandList.Remove(i))
-						break;
-				DestroyImmediate(i.gameObject);
-			}
-			_controlled_block.Clear();
-			_pre_command.Clear();
-				
 		}
 		public override void OnEnter()
 		{
