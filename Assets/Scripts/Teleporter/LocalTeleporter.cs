@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LocalTeleporter : MonoBehaviour
+public class LocalTeleporter : BaseTeleporter
 {
-
 	Collider2D[] tar;
-	public float detectRadius = 1;
-	public float delayTime = 2;
 	[Tooltip("Destination (LocalTeleporter)")]
 	public LocalTeleporter des;
-	public bool avaible = true;
 
 	Vector3 desPos;
 	Vector3 locPos;
@@ -27,10 +23,10 @@ public class LocalTeleporter : MonoBehaviour
 			StartCoroutine(this.teleport());
 	}
 
-	IEnumerator teleport()
+	new IEnumerator teleport()
 	{
 		this.des.avaible = false;
-		
+
 		// set all touched entity to destination
 		for(int u = 0; u != tar.Length; ++u)
 		{
@@ -42,7 +38,7 @@ public class LocalTeleporter : MonoBehaviour
 	}
 
 	// return whether player touch this teleporter
-	bool detect()
+	new bool detect()
 	{
 		tar = Collide.AreaGetCollideByTag(this.locPos, this.detectRadius, Collide.Method.Circle, "Player");
 
