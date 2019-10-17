@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using UnityEngine;
 using UnityEditor;
-
+using UnityEngine;
 
 // use for store object name and price
 [CreateAssetMenu()]
@@ -20,7 +19,7 @@ public class PriceInfo : ScriptableObject
 		}
 
 		int old = price[name];
-		price[name] += (int)(count / old * Random.Range(0.8f, 1.2f));
+		price[name] += (int) (count / old * Random.Range(0.8f, 1.2f));
 	}
 
 	public void onSell(string name, int count)
@@ -32,7 +31,7 @@ public class PriceInfo : ScriptableObject
 		}
 
 		int old = price[name];
-		price[name] -= (int)(count / old * Random.Range(0.8f, 1.2f));
+		price[name] -= (int) (count / old * Random.Range(0.8f, 1.2f));
 		price[name] = Mathf.Max(price[name], 5);
 	}
 }

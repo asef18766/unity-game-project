@@ -1,41 +1,45 @@
 using System;
-using UnityEngine;
 using UnityEditor;
-public class WeaponEventHandler:MonoBehaviour
+using UnityEngine;
+public class WeaponEventHandler : MonoBehaviour
 {
-    #region attack_behavior
-		public static GameObject bullet_prefab;
-		
-		public int cur_weapon_id=0;
-		public Weapon_Manager weapon_m;
-		Weapon cur_weapon;
-		void SwitchWeapon()
-		{
-			if(Input.mouseScrollDelta.y!=0)
-			{
-				int WP_Count=weapon_m.GetWeaponAmount();
-				cur_weapon_id+=(int)(Input.mouseScrollDelta.y);
-				cur_weapon_id=(cur_weapon_id+WP_Count)%WP_Count;
+	#region attack_behavior
+	public static GameObject bulletPrefab;
 
-				//Instantiate Weapon to Scence
-				cur_weapon=weapon_m.SetUpWeaponInstance(cur_weapon_id,this.gameObject);
-			}
-		}
-		void shoot()
+	public int curWeaponId = 0;
+	public WeaponManager weaponManager;
+	Weapon curWeapon;
+
+	void SwitchWeapon()
+	{
+		if(Input.mouseScrollDelta.y != 0)
 		{
-			if(Input.GetMouseButton(0))
-			{
-				cur_weapon.Attack();
-			}
+			int weaponCount = this.weaponManager.weaponAmount;
+			this.curWeaponId += (int) (Input.mouseScrollDelta.y);
+			this.curWeaponId = (this.curWeaponId + weaponCount) % weaponCount;
+
+			//Instantiate Weapon to Scence
+			this.curWeapon = this.weaponManager.SetUpWeaponInstance(this.curWeaponId, this.gameObject);
 		}
-        void Start()
-        {
-            cur_weapon=weapon_m.SetUpWeaponInstance(cur_weapon_id,this.gameObject);
-        }
-        void Update()
-        {
-            shoot();
-            SwitchWeapon();
-        }
+	}
+
+	void shoot()
+	{
+		if(Input.GetMouseButton(0))
+		{
+			this.curWeapon.Attack();
+		}
+	}
+
+	void Start()
+	{
+		this.curWeapon = this.weaponManager.SetUpWeaponInstance(this.curWeaponId, gameObject);
+	}
+
+	void Update()
+	{
+		shoot();
+		SwitchWeapon();
+	}
 	#endregion
 }
