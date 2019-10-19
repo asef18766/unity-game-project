@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text;
+using System.Security.Cryptography;  
 using UnityEngine;
 [CreateAssetMenu(menuName= "Items/Create Item")]
 public class Item : ScriptableObject {
@@ -16,7 +18,25 @@ public class Item : ScriptableObject {
 	{
 		return ((other is Item) && (this == ((Item) other)));
 	}
+	/*
+	public override int GetHashCode()
+	{
+		using (MD5 md5hash = MD5.Create())  
+        {
+			byte[] bytes = md5hash.ComputeHash(Encoding.UTF8.GetBytes("HELP_TEXT:"+help_text+
+																	  ";USAGE:"+((usage==null)? "NULL":usage.GetHashCode().ToString())+
+																	  ";ITEM_TEXTURE:"+item_texture.GetHashCode().ToString()
+																	  ));
+			StringBuilder builder = new StringBuilder();  
+                for (int i = 0; i < bytes.Length; i++)  
+                {  
+                    builder.Append(bytes[i].ToString("x2"));  
+                }  
+                return builder.GetHashCode(); 
+		}
+	}*/
 	#endregion
+	[SerializeField] string item_name;
 	[SerializeField][TextArea] string help_text;
 	[SerializeField] I_ItemUsage usage=null;
 	[SerializeField] GameObject item_texture;

@@ -73,7 +73,6 @@ public class Player : Entity
 		tf.rotation = Quaternion.Euler(0, 0, ang);
 	}
 	#endregion
-
 	#region collision_behavior
 	void OnCollisionStay2D(Collision2D collisionInfo)
 	{

@@ -1,18 +1,35 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class ItemCount : ScriptableObject
+[System.Serializable]
+public class ItemCount
 {
-	void OnEnable()
+	public ItemCount(Item i)
 	{
 		id_controller=ItemInstanceManager.Get_Id_Manager_Instance();
-		id=id_controller.GetIdByItem(item);
+		id=id_controller.GetIdByItem(i);
+		count=0;
+		item=i;
+	}
+	public ItemCount(int i)
+	{
+		id_controller=ItemInstanceManager.Get_Id_Manager_Instance();
+		id=i;
+		count=0;
+		item=id_controller.GetItemById(id);
+	}
+	public ItemCount(int m_id,int m_count)
+	{
+		id_controller=ItemInstanceManager.Get_Id_Manager_Instance();
+		id=m_id;
+		count=m_count;
+		item=id_controller.GetItemById(id);
 	}
 	public const int MAX_COUNT = 99;
-	private static ItemInstanceManager id_controller;
-	public int count { private set; get; }
-	public int id;
-	private Item item;
+	private static ItemInstanceManager id_controller=ItemInstanceManager.Get_Id_Manager_Instance();
+	[SerializeField]public int count;
+	[SerializeField]public int id;
+	[SerializeField]private Item item;
 
 	#region overload_operators
 	public static bool operator==(ItemCount x,ItemCount y)
@@ -50,9 +67,21 @@ public class ItemCount : ScriptableObject
 	}
 
 	#endregion
-	
+	public void init()
+	{
+		item=id_controller.GetItemById(id);
+	}
+	bool _SetItemInstance()
+	{
+		if(item==null)
+			item=id_controller.GetItemById(id);
+		
+		return item!=null;
+	}
 	public bool use()
 	{
+		if(item==null && _SetItemInstance()==false)
+			return false;
 		if(item == null || count == 0)
 		{
 			return false;

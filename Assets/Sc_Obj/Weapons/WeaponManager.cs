@@ -4,7 +4,7 @@ using System.IO;
 using UnityEngine;
 using UnityEditor;
 [CreateAssetMenu(menuName= "Weapons/Create WeaponManager")]
-public class Weapon_Manager:ScriptableObject
+public class WeaponManager:ScriptableObject
 {
     GameObject cur_weapon;
     public List<GameObject> weapon_list=new List<GameObject>();

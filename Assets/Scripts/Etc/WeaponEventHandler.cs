@@ -14,7 +14,7 @@ public class WeaponEventHandler : MonoBehaviour
 	{
 		if(Input.mouseScrollDelta.y != 0)
 		{
-			int weaponCount = this.weaponManager.weaponAmount;
+			int weaponCount = this.weaponManager.GetWeaponAmount();
 			this.curWeaponId += (int) (Input.mouseScrollDelta.y);
 			this.curWeaponId = (this.curWeaponId + weaponCount) % weaponCount;
 
