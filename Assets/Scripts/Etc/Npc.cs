@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Npc : MonoBehaviour {
+public class Npc : MonoBehaviour
+{
 	public string NpcName;
 }

@@ -2,69 +2,64 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
-public class Bag : MonoBehaviour
+[System.Serializable]
+[CreateAssetMenu(menuName= "Items/Create Bag")]
+public class Bag : ScriptableObject
 {
-	private Dictionary<int, ItemCount> content;
+	public static Bag bag_ins;
 	private static ItemInstanceManager id_controller;
+	const int MAX_ITEM_AMOUNT=64;
 
-	void Start()
+	[SerializeField]List<ItemCount> content;
+
+	void OnEnable()
 	{
-		content = new Dictionary<int, ItemCount>();
+		bag_ins=this;
 		id_controller=ItemInstanceManager.Get_Id_Manager_Instance();
+		foreach(var i in content)
+			i.init();
 	}
-
 	public List<ItemCount> getItemList()
 	{
-		return content.Values.ToList();
+		return content;
 	}
-	public bool checkItem(ItemCount req)
+	public int checkItem(int _id)
 	{
-		if(!content.ContainsKey(req.id))
-			return false;
-		if(content[req.id].count<=req.count)
-			return false;
-		
-		return true;
+		return content.FindIndex(x=> x.id==_id);
+	}
+	public int checkItem(ItemCount req)
+	{
+		return content.FindIndex(x=> x.id==req.id && x.count<=req.count);
 	}
 	public bool removeItem(ItemCount req)
 	{
-		if(!content.ContainsKey(req.id))
+		int index=checkItem(req);
+
+		if(index==-1)
 			return false;
-		if(!content[req.id].updateCount(content[req.id].count-req.count))
-			return false;
-		if(content[req.id].count==0)
-			content.Remove(req.id);
-		
-		return true;
+
+		return content[index].updateCount(content[index].count - req.count);
 	}
 	public bool updateItem(ItemCount req)
 	{
-		if(content.ContainsKey(req.id))
-			return content[req.id].updateCount(req.count);
-		else
-		{
-			ItemCount ic = ScriptableObject.CreateInstance<ItemCount>();
-			// set item
-			ic.updateCount(req.count);
-			content.Add(ic.id, ic);
+		int index=checkItem(req.id);
+		if(index!=-1)
+			return content[index].updateCount(req.count);
+		
 
-			return true;
-		}
+		content.Add(req);
+		return true;
 	}
-	// insert n items into bag
+	// modify n items into bag
 	public bool updateItem(Item other, int n)
 	{
 		int item_id=id_controller.GetIdByItem(other);
-		if(content.ContainsKey(item_id))
-			return content[item_id].updateCount(n);
+		int index=checkItem(item_id);
+		if(index!=-1)
+			return content[index].updateCount(n);
 		else
 		{
-			ItemCount ic = ScriptableObject.CreateInstance<ItemCount>();
-			// set item
-			ic.updateCount(n);
-			content.Add(ic.id, ic);
-
+			content.Add(new ItemCount(item_id,n));
 			return true;
 		}
 	}

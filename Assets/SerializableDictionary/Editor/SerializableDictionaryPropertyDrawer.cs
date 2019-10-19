@@ -6,6 +6,8 @@ using System.Reflection;
 using System;
 
 [CustomPropertyDrawer(typeof(PriceDict))]
+public class PriceDictionaryDrawer : SerializableDictionaryPropertyDrawer {}
+
 public class SerializableDictionaryPropertyDrawer : PropertyDrawer
 {
 	const string KeysFieldName = "m_keys";

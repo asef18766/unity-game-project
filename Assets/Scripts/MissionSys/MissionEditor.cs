@@ -6,9 +6,7 @@ using System.Collections.Generic;
 [CustomEditor(typeof(Mission),true)]
 public class MissionEditor : Editor
 {
-    Mission mission;
     public void OnEnable(){
-        mission=(Mission)target;
     }
     public override void OnInspectorGUI () {
 		serializedObject.Update();
