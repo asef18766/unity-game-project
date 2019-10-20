@@ -1,11 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class GameInfo
-{
-	public int times{get;set;}
-	public int highest_record{get;set;}
-}
 public class PlayerData
 {
 	public static Vector3 player_Pos = new Vector3(-0.426f, 0.435f, 0.0f);

@@ -63,4 +63,24 @@ public class Bag : ScriptableObject
 			return true;
 		}
 	}
+	public bool addItem(ItemCount it)
+	{
+		int index=checkItem(it.id);
+		if(index!=-1)
+		{
+			do
+			{
+				bool NotOverStack=content[index].updateCount(content[index].count+it.count);
+				if(NotOverStack)
+					return true;
+				index=content.FindIndex(index,x=> x.id==it.id);
+			} while (index!=-1);
+		}
+			
+		if(content.Count==MAX_ITEM_AMOUNT)
+			return false;
+		
+		content.Add(it);
+		return true;
+	}
 }

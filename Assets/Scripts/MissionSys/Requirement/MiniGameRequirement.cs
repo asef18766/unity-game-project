@@ -5,7 +5,6 @@ public enum GameChoice
     LogCutter=0,
     AttackOnMobs
 }
-[CreateAssetMenu(menuName="Mission/Create Mini Game Requirement")]
 public class MiniGameRequirement:I_Requirement
 {
     [SerializeField]GameChoice gameChoice;
