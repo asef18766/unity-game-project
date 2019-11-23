@@ -5,11 +5,11 @@ using UnityEngine;
 using UnityEditor;
 
 [CreateAssetMenu(menuName= "Weapons/Create Weapon Argument")]
-public class Weapon_Arg:I_Weapon_Arg
+public class Weapon_Arg:I_WeaponArgs
 {
     public void OnEnable()
     {
-        ammo_remain=ammo_Capasity;
-        atk_method.set_dmg(dmg);
+        ammoRemain=ammo_Capasity;
+        atkMethod.set_dmg(dmg);
     }
 }

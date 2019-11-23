@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ProjectileShooter : MonoBehaviour
 {
-	[SerializeField] I_WeaponArg weaponArg;
+	[SerializeField] I_WeaponArgs weaponArg;
 	bool blockCoroutine = false;
 
 	IEnumerator onAtk()

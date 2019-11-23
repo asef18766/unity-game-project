@@ -1,7 +1,19 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: cfbc2fcb13fa8b249885fa210302a6d9
 folderAsset: yes
 timeCreated: 1574511171
+=======
+<<<<<<< HEAD:Assets/Resources/Prefabs/MissionSys.meta
+guid: 65f718ff0968c3b43965a0d66c494bc1
+folderAsset: yes
+timeCreated: 1571579191
+=======
+guid: cfbc2fcb13fa8b249885fa210302a6d9
+folderAsset: yes
+timeCreated: 1574511171
+>>>>>>> master:Assets/Scripts/WeaponComponent.meta
+>>>>>>> master
 licenseType: Free
 DefaultImporter:
   externalObjects: {}
