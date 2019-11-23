@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ScenceTeleporter : MonoBehaviour
+public class ScenceTeleporter : BaseTeleporter
 {
 	public string desScenceName;
-	public float detectRadius = 1;
-	public float delayTime = 2;
-	public bool avaible = false;
 	Vector3 locPos;
 	public Vector3 desPos;
 
@@ -30,14 +27,14 @@ public class ScenceTeleporter : MonoBehaviour
 			this.teleport();
 	}
 
-	void teleport()
+	new void teleport()
 	{
 		PlayerData.player_Pos = this.desPos;
 		PlayerData.SavePlayerData();
 		SceneManager.LoadScene(this.desScenceName);
 	}
 
-	bool detect()
+	new bool detect()
 	{
 		Collider2D[] tar = Collide.AreaGetCollideByTag(this.locPos, this.detectRadius, Collide.Method.Circle, "Player");
 
