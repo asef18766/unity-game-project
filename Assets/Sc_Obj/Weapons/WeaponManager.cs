@@ -1,33 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using UnityEngine;
 using UnityEditor;
-[CreateAssetMenu(menuName= "Weapons/Create WeaponManager")]
-public class WeaponManager:ScriptableObject
+using UnityEngine;
+[CreateAssetMenu(menuName = "Weapons/Create WeaponManager")]
+public class WeaponManager : ScriptableObject
 {
-    GameObject cur_weapon;
-    public List<GameObject> weapon_list=new List<GameObject>();
-    public Weapon SetUpWeaponInstance(int id,GameObject player)
+    GameObject curWeapon;
+    public List<GameObject> weaponList = new List<GameObject>();
+    public Weapon SetUpWeaponInstance(int id, GameObject player)
     {
-        if( id<weapon_list.Count && id>=0)
+        if(id < weaponList.Count && id >= 0)
         {
-            if(cur_weapon!=null)
-                Destroy(cur_weapon);
-            InstantiateWeapon(weapon_list[id],player) ;
-            return cur_weapon.GetComponentInChildren<Weapon>();
+            if(curWeapon != null)
+                Destroy(curWeapon);
+            InstantiateWeapon(weaponList[id], player);
+            return curWeapon.GetComponentInChildren<Weapon>();
         }
-        
+
         Debug.Log("request failed");
         return null;
     }
-    
-    void InstantiateWeapon(GameObject weapon,GameObject player)
+
+    void InstantiateWeapon(GameObject weapon, GameObject player)
     {
-        cur_weapon=Instantiate(weapon,player.transform);
+        curWeapon = Instantiate(weapon, player.transform);
     }
     public int GetWeaponAmount()
     {
-        return weapon_list.Count;
+        return weaponList.Count;
     }
 }
