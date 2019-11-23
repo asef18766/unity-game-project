@@ -110,7 +110,7 @@ public class Bag : ScriptableObject
 			return null;
 		return id_controller.GetItemById(content[index].id).GetHelpText();
 	}
-	public int GetBagSize(int index)
+	public int GetBagSize()
 	{
 		return content.Count;
 	}
