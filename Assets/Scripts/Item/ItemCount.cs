@@ -78,7 +78,7 @@ public class ItemCount
 		
 		return item!=null;
 	}
-	public bool use()
+	public bool use(ItemEvent e)
 	{
 		if(item==null && _SetItemInstance()==false)
 			return false;
@@ -87,7 +87,7 @@ public class ItemCount
 			return false;
 		}
 
-		item.use_item();
+		item.use_item(e);
 		count--;
 
 		// TODO: item empty event

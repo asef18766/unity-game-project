@@ -30,19 +30,32 @@ public class Item : MonoBehaviour {
 	public static GameObject pickableItemInstance;
 	List<I_ItemUsage> usages=new List<I_ItemUsage>();
 	[SerializeField] string item_name;
+
 	[SerializeField][TextArea] string help_text;
 	[SerializeField] Sprite item_texture;
+	public string GetItemName()
+	{
+		return item_name;
+	}
+	public string GetHelpText()
+	{
+		return help_text;
+	}
+	public Sprite GetItemSprite()
+	{
+		return item_texture;
+	}
 	public Item(Item i)
 	{
-		help_text=i.get_help_text();
+		help_text=i.help_text;
 		usages=i.usages;
 		item_texture=i.item_texture;
 	}
-	public bool isUsable(){ return usages!=null; }
-	public string get_help_text(){ return help_text; }
-	public void use_item()
+	public bool isUsable(){ return usages.Count!=0; }
+
+	public void use_item(ItemEvent e)
 	{
-		foreach(I_ItemUsage usage in usages)
+		foreach(I_ItemUsage usage in usages.FindAll( (u)=>{return u.itemEvent==e;} ))
 			usage.use();
 	}
 

@@ -10,7 +10,7 @@ public class Bag : ScriptableObject
 	private static ItemInstanceManager id_controller;
 	const int MAX_ITEM_AMOUNT=64;
 
-	[SerializeField]List<ItemCount> content;
+	public List<ItemCount> content;
 
 	void OnEnable()
 	{
@@ -85,28 +85,41 @@ public class Bag : ScriptableObject
 		content.Add(it);
 		return true;
 	}
-	public static Sprite GetItemSprite(int index)
+	public Sprite GetItemSprite(int index)
 	{
-		return null;
+		if(content.Count <= index && index < 0)
+			return null;
+		return id_controller.GetItemById(content[index].id).GetItemSprite();
+		
 	}
-	public static string GetItemName(int index)
+	public string GetItemName(int index)
 	{
-		return null;
+		if(content.Count <= index && index < 0)
+			return null;
+		return id_controller.GetItemById(content[index].id).GetItemName();
 	}
-	public static int GetItemCount(int index)
+	public int GetItemCount(int index)
 	{
-		return -1;
+		if(content.Count <= index && index < 0)
+			return -1;
+		return content[index].count;
 	}
-	public static string GetItemDescription(int index)
+	public string GetItemDescription(int index)
 	{
-		return null;
+		if(bag_ins.content.Count <= index && index < 0)
+			return null;
+		return id_controller.GetItemById(content[index].id).GetHelpText();
 	}
-	public static bool CheckItemEvent(int index,ItemEvent e)
+	public int GetBagSize(int index)
 	{
-		return false;
+		return content.Count;
 	}
-	public static bool ExecuteItemEvent(int index,ItemEvent e)
+	public bool CheckItemEvent(int index,ItemEvent e)
 	{
-		return false;
+		return id_controller.GetItemById(bag_ins.content[index].id).isUsable();
+	}
+	public bool ExecuteItemEvent(int index,ItemEvent e)
+	{
+		return bag_ins.content[index].use(e);
 	}
 }
