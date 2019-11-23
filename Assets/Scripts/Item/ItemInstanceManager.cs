@@ -8,19 +8,14 @@ public class ItemInstanceManager:ScriptableObject
     {
         if(m_instance==null)
         {
-            Debug.Log("Return Null instance of ItemInstanceManager");
-            return null;
+            m_instance = Resources.FindObjectsOfTypeAll<ItemInstanceManager>()[0];
         }
         return m_instance;
-    }
-    void OnEnable()
-    {
-        m_instance=this;
     }
     [SerializeField] List<Item> item_set;
     public Item GetItemById(int id)
     {
-        if(id>=item_set.Count||id<0)
+        if(item_set[id]==null)
         {
             Debug.Log("Error Id Request");
             return null;

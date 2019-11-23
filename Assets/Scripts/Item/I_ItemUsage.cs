@@ -1,7 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-abstract class I_ItemUsage : ScriptableObject
+using UnityEngine;  
+public enum ItemEvent
 {
-    abstract public void use();
+    Use,
+    Drop
+}
+public abstract class I_ItemUsage : MonoBehaviour
+{
+    public ItemEvent itemEvent;
+    abstract public bool use();
 }

@@ -13,6 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item_name: test item
   help_text: just a test item
-  usage: {fileID: 0}
-  item_texture: {fileID: 1705386395850414, guid: bef1d568d31cefe47bac7a201e332a66,
-    type: 2}
+  item_texture: {fileID: 21300000, guid: c22400d5bd211479099238aaacbd4852, type: 3}

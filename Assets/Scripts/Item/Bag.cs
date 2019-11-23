@@ -15,6 +15,8 @@ public class Bag : ScriptableObject
 	void OnEnable()
 	{
 		bag_ins=this;
+		if(bag_ins == null)
+			Debug.Log("Null Bag Instance");
 		id_controller=ItemInstanceManager.Get_Id_Manager_Instance();
 		foreach(var i in content)
 			i.init();
@@ -82,5 +84,29 @@ public class Bag : ScriptableObject
 		
 		content.Add(it);
 		return true;
+	}
+	public static Sprite GetItemSprite(int index)
+	{
+		return null;
+	}
+	public static string GetItemName(int index)
+	{
+		return null;
+	}
+	public static int GetItemCount(int index)
+	{
+		return -1;
+	}
+	public static string GetItemDescription(int index)
+	{
+		return null;
+	}
+	public static bool CheckItemEvent(int index,ItemEvent e)
+	{
+		return false;
+	}
+	public static bool ExecuteItemEvent(int index,ItemEvent e)
+	{
+		return false;
 	}
 }
