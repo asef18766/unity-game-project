@@ -32,7 +32,7 @@ public class Item : MonoBehaviour {
 	[SerializeField] string item_name;
 
 	[SerializeField][TextArea] string help_text;
-	[SerializeField] Sprite item_texture;
+	Sprite item_texture;
 	public string GetItemName()
 	{
 		return item_name;
@@ -66,5 +66,9 @@ public class Item : MonoBehaviour {
 		foreach(Behaviour behaviour in n_item.GetComponentsInChildren<Behaviour>())
     		behaviour.enabled = true;
 		return n_item;
+	}
+	void Start()
+	{
+		item_texture=GetComponent<SpriteRenderer>().sprite;
 	}
 }
