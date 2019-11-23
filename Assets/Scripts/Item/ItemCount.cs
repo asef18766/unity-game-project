@@ -29,7 +29,7 @@ public class ItemCount
 	private static ItemInstanceManager id_controller=ItemInstanceManager.Get_Id_Manager_Instance();
 	[SerializeField]public int count;
 	[SerializeField]public int id;
-	[SerializeField]private Item item;
+	private Item item;
 
 	#region overload_operators
 	public static bool operator==(ItemCount x,ItemCount y)

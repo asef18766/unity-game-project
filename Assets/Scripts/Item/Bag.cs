@@ -15,6 +15,8 @@ public class Bag : ScriptableObject
 	void OnEnable()
 	{
 		bag_ins=this;
+		if(bag_ins == null)
+			Debug.Log("Null Bag Instance");
 		id_controller=ItemInstanceManager.Get_Id_Manager_Instance();
 		foreach(var i in content)
 			i.init();
@@ -62,5 +64,49 @@ public class Bag : ScriptableObject
 			content.Add(new ItemCount(item_id,n));
 			return true;
 		}
+	}
+	public bool addItem(ItemCount it)
+	{
+		int index=checkItem(it.id);
+		if(index!=-1)
+		{
+			do
+			{
+				bool NotOverStack=content[index].updateCount(content[index].count+it.count);
+				if(NotOverStack)
+					return true;
+				index=content.FindIndex(index,x=> x.id==it.id);
+			} while (index!=-1);
+		}
+			
+		if(content.Count==MAX_ITEM_AMOUNT)
+			return false;
+		
+		content.Add(it);
+		return true;
+	}
+	public static Sprite GetItemSprite(int index)
+	{
+		return null;
+	}
+	public static string GetItemName(int index)
+	{
+		return null;
+	}
+	public static int GetItemCount(int index)
+	{
+		return -1;
+	}
+	public static string GetItemDescription(int index)
+	{
+		return null;
+	}
+	public static bool CheckItemEvent(int index,ItemEvent e)
+	{
+		return false;
+	}
+	public static bool ExecuteItemEvent(int index,ItemEvent e)
+	{
+		return false;
 	}
 }

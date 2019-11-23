@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu(menuName="Mission/Create Item Requirement")]
 public class ItemRequirement:I_Requirement
 {
     [SerializeField]List<ItemCount> req_item;
