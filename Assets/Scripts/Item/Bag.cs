@@ -6,6 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName= "Items/Create Bag")]
 public class Bag : ScriptableObject
 {
+	[SerializeField] Bag _bag_ins;
 	public static Bag bag_ins;
 	private static ItemInstanceManager id_controller;
 	const int MAX_ITEM_AMOUNT=64;
@@ -14,9 +15,7 @@ public class Bag : ScriptableObject
 
 	void OnEnable()
 	{
-		bag_ins=this;
-		if(bag_ins == null)
-			Debug.Log("Null Bag Instance");
+		bag_ins=_bag_ins;
 		id_controller=ItemInstanceManager.Get_Id_Manager_Instance();
 		foreach(var i in content)
 			i.init();

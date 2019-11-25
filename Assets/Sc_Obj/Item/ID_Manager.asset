@@ -11,5 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9695c6d54a21e84598197024c62c6c9, type: 3}
   m_Name: ID_Manager
   m_EditorClassIdentifier: 
+  _m_instance: {fileID: 11400000}
   item_set:
   - {fileID: 11400000, guid: 233b701b739a7cf48864020a38ee093e, type: 2}

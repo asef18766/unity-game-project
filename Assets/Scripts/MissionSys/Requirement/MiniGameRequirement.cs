@@ -11,6 +11,6 @@ public class MiniGameRequirement:I_Requirement
     [SerializeField]GameInfo require;
     public override bool check_require()
     {
-        return PlayerData.record[(int)gameChoice].highest_record >= require.highest_record && PlayerData.record[(int)gameChoice].times >= require.times;
+        return PlayerData.record[(int)gameChoice].highestRecord >= require.highestRecord && PlayerData.record[(int)gameChoice].times >= require.times;
     }
 }

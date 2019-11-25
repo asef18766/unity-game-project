@@ -3,14 +3,15 @@ using UnityEngine;
 [CreateAssetMenu(menuName= "Items/Create Item Manager")]
 public class ItemInstanceManager:ScriptableObject
 {
-    static ItemInstanceManager m_instance;
+    [SerializeField]ItemInstanceManager _m_instance;
+    static ItemInstanceManager m_instance=null;
     public static ItemInstanceManager Get_Id_Manager_Instance()
     {
-        if(m_instance==null)
-        {
-            m_instance = Resources.FindObjectsOfTypeAll<ItemInstanceManager>()[0];
-        }
         return m_instance;
+    }
+    void OnEnable()
+    {
+        m_instance=_m_instance;
     }
     [SerializeField] List<Item> item_set;
     public Item GetItemById(int id)
