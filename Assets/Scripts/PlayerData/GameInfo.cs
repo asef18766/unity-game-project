@@ -4,6 +4,7 @@ using UnityEngine;
 [System.Serializable]
 public class GameInfo
 {
-	[SerializeField]public int times{get;set;}
-	[SerializeField]public int highest_record{get;set;}
+	[SerializeField] public int times { get; set; }
+
+	[SerializeField] public int highestRecord { get; set; }
 }
