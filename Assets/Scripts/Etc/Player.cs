@@ -113,7 +113,7 @@ public class Player : Entity
 	void LoadPlayerData()
 	{
 		PlayerData.LoadPlayerData();
-		tf.position = PlayerData.player_Pos;
+		tf.position = PlayerData.playerPos;
 		WeaponEventHandler.bulletPrefab = Resources.Load("Prefabs/Bullet") as GameObject;
 	}
 	void Start()
