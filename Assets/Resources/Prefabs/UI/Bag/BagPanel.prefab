@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 224693413285467304}
   - component: {fileID: 222449465380689464}
   - component: {fileID: 114319073898608096}
+  - component: {fileID: 114292175790071162}
   m_Layer: 5
   m_Name: BagPanel
   m_TagString: Untagged
@@ -354,6 +355,18 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114292175790071162
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1409662707572722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050ccc4e0fe51fc408394320285cd508, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxPageSize: 3
 --- !u!114 &114319073898608096
 MonoBehaviour:
   m_ObjectHideFlags: 1
