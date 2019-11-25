@@ -5,7 +5,7 @@ public class Player : Entity
 	#region walking_behavior
 
 	public enum WalkDir { UP, DOWN, LEFT, RIGHT }
-	Vector2 moving_dir;
+	Vector2 movingDir;
 
 	Player.WalkDir[] playerController()
 	{
@@ -55,8 +55,8 @@ public class Player : Entity
 				tf.position += (Vector3.down * (Time.deltaTime * tf.localScale.x));
 		}
 
-		moving_dir.x = tf.position.x - x;
-		moving_dir.y = tf.position.y - y;
+		movingDir.x = tf.position.x - x;
+		movingDir.y = tf.position.y - y;
 	}
 
 	#endregion
@@ -113,7 +113,7 @@ public class Player : Entity
 	void LoadPlayerData()
 	{
 		PlayerData.LoadPlayerData();
-		tf.position = PlayerData.player_Pos;
+		tf.position = PlayerData.playerPos;
 		WeaponEventHandler.bulletPrefab = Resources.Load("Prefabs/Bullet") as GameObject;
 	}
 	void Start()

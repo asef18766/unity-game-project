@@ -29,7 +29,7 @@ public class ScenceTeleporter : BaseTeleporter
 
 	new void teleport()
 	{
-		PlayerData.player_Pos = this.desPos;
+		PlayerData.playerPos = this.desPos;
 		PlayerData.SavePlayerData();
 		SceneManager.LoadScene(this.desScenceName);
 	}
