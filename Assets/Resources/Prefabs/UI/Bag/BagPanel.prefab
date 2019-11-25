@@ -223,6 +223,7 @@ GameObject:
   - component: {fileID: 224201666925642622}
   - component: {fileID: 222894699123687086}
   - component: {fileID: 114426456432857050}
+  - component: {fileID: 95392552319747410}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -247,6 +248,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &95392552319747410
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1783327993182832}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 87e7677d0c64d644c9c0f6ba7f207c24, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114039082048191768
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -258,7 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 689601a94e231304780b9658c5f4af83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemUIObject: {fileID: 1129881624725076, guid: 89c59dcdf2b0be7429af46e5c0d0f5a4,
+  itemUIObject: {fileID: 1293464997560612, guid: 89c59dcdf2b0be7429af46e5c0d0f5a4,
     type: 2}
   initPos: {x: 0, y: 300, z: 0}
   deltaY: -130
@@ -488,7 +506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7058823, g: 0.74442184, b: 1, a: 1}
+  m_Color: {r: 0.8455882, g: 0.8455882, b: 0.8455882, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

@@ -37,6 +37,9 @@ public class BagPanelController : MonoBehaviour
 	#region InfoPanel variables
 	private const int BUTTON_COUNT = 2;
 	private int buttonIndex;
+	public GameObject useButton;
+	public GameObject dropButton;
+	private GameObject[] buttons;
 	private Image itemImage;
 	private Text descriptionText;
 	#endregion
@@ -44,6 +47,12 @@ public class BagPanelController : MonoBehaviour
 	void Start()
 	{
 		layoutItemUI = transform.Find("ItemList").GetComponent<LayoutItemUI>();
+
+		// find buttons
+		useButton = transform.Find("Info/Buttons/ButtonUse").gameObject;
+		dropButton = transform.Find("Info/Buttons/ButtonDrop").gameObject;
+		buttons = new GameObject[]{ useButton, dropButton };
+		fillButton(Color.gray);
 
 		// init values
 		state = BagUIState.VIEW_ITEM;
@@ -60,7 +69,7 @@ public class BagPanelController : MonoBehaviour
 
 		// redraw
 		redrawItemList();
-		redarwInfoPanel();
+		redrawInfoPanel();
 	}
 
 	void Update()
@@ -99,6 +108,13 @@ public class BagPanelController : MonoBehaviour
 		}
 	}
 
+	// fill button with color
+	private void fillButton(Color color)
+	{
+		foreach(GameObject btn in buttons)
+			btn.GetComponent<Image>().color = color;
+	}
+
 	#region Redraw functions
 	private void redrawItemList()
 	{
@@ -128,13 +144,13 @@ public class BagPanelController : MonoBehaviour
 			itemUIs[i].redraw();
 		}
 
-		for(int i = 0; i < maxPageSize; i++)
+		for(int i = pageSize; i < maxPageSize; i++)
 		{
 			itemUIs[i].gameObject.SetActive(false);
 		}
 	}
 
-	private void redarwInfoPanel()
+	private void redrawInfoPanel()
 	{
 		itemImage.sprite = currentItem.sprite;
 		descriptionText.text = currentItem.description;
@@ -146,6 +162,9 @@ public class BagPanelController : MonoBehaviour
 	{
 		// update cursor index
 		// and check bound (turn page)
+
+		currentItem.unselect();
+
 		if(Input.GetKeyDown(KeyCode.UpArrow))
 		{
 			cursorIndex--;
@@ -155,6 +174,7 @@ public class BagPanelController : MonoBehaviour
 				cursorIndex = maxPageSize - 1;
 				redrawItemList();
 			}
+			cursorIndex = Mathf.Max(0, cursorIndex);
 		}
 		else if(Input.GetKeyDown(KeyCode.DownArrow))
 		{
@@ -174,6 +194,9 @@ public class BagPanelController : MonoBehaviour
 		// enter view info state?
 		else if(Input.GetKeyDown(KeyCode.Z))
 		{
+			// set use button as default
+			buttonIndex = 0;
+			fillButton(Color.white);
 			state = BagUIState.VIEW_INFO;
 		}
 		// exit page
@@ -182,6 +205,9 @@ public class BagPanelController : MonoBehaviour
 			player.gameObject.SetActive(true);
 			Destroy(gameObject);
 		}
+
+		currentItem.select();
+		redrawInfoPanel();
 	}
 
 	private void infoPanelHandle()
@@ -191,6 +217,7 @@ public class BagPanelController : MonoBehaviour
 		// esc to escape
 
 		// move
+		buttons[buttonIndex].GetComponent<Image>().color = Color.white;
 		if(Input.GetKeyDown(KeyCode.LeftArrow))
 		{
 			buttonIndex--;
@@ -200,6 +227,7 @@ public class BagPanelController : MonoBehaviour
 			buttonIndex++;
 		}
 		buttonIndex = (buttonIndex + BUTTON_COUNT) % BUTTON_COUNT;
+		buttons[buttonIndex].GetComponent<Image>().color = Color.red;
 
 		// select
 		if(Input.GetKeyDown(KeyCode.Z))
@@ -225,6 +253,7 @@ public class BagPanelController : MonoBehaviour
 		// exit
 		else if(Input.GetKeyDown(KeyCode.Escape))
 		{
+			fillButton(Color.gray);
 			state = BagUIState.VIEW_ITEM;
 		}
 	}

@@ -5,10 +5,12 @@ using UnityEngine.UI;
 
 public class ItemUI : MonoBehaviour
 {
+	private Animator animator;
+	
 	// children objects
-	private Image image;
-	private Text nameText;
-	private Text countText;
+	public Image image;
+	public Text nameText;
+	public Text countText;
 
 	// datas
 	public Sprite sprite { get; private set; }
@@ -18,9 +20,7 @@ public class ItemUI : MonoBehaviour
 
 	void Start()
 	{
-		image = transform.Find("Image").GetComponent<Image>();
-		nameText = transform.Find("Name").GetComponent<Text>();
-		countText = transform.Find("Count").GetComponent<Text>();
+		animator = GetComponent<Animator>();
 	}
 
 	public void updateInfo(Sprite sp, string iName, string desc, int cnt)
@@ -36,5 +36,15 @@ public class ItemUI : MonoBehaviour
 		image.sprite = sprite;
 		nameText.text = itemName;
 		countText.text = "x" + count;
+	}
+
+	public void select()
+	{
+		animator.SetBool("select", true);
+	}
+
+	public void unselect()
+	{
+		animator.SetBool("select", false);
 	}
 }
