@@ -20,6 +20,10 @@ public class Bag : ScriptableObject
 		id_controller=ItemInstanceManager.Get_Id_Manager_Instance();
 		foreach(var i in content)
 			i.init();
+		if(Bag.bag_ins==null)
+		{
+			Debug.Log("can not find bag ins");
+		}
 	}
 	public List<ItemCount> getItemList()
 	{
