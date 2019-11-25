@@ -31,6 +31,7 @@ public class BagPanelController : MonoBehaviour
 	// whether there exist next page
 	private bool hasNextPage;
 	private int bagSize;
+	private LayoutItemUI layoutItemUI;
 	#endregion
 
 	#region InfoPanel variables
@@ -42,12 +43,14 @@ public class BagPanelController : MonoBehaviour
 
 	void Start()
 	{
+		layoutItemUI = transform.Find("ItemList").GetComponent<LayoutItemUI>();
+
 		// init values
 		state = BagUIState.VIEW_ITEM;
 		hasNextPage = false;
 		pageIndex = 0;
 		cursorIndex = 0;
-		itemUIs = new ItemUI[maxPageSize];
+		itemUIs = layoutItemUI.place(maxPageSize);
 		bagSize = Bag.bag_ins.GetBagSize();
 		buttonIndex = 0;
 
@@ -111,10 +114,11 @@ public class BagPanelController : MonoBehaviour
 			pageSize = maxPageSize - (end - bagSize);
 			hasNextPage = false;
 		}
-		
+
 		int start = maxPageSize * pageIndex;
 		for(int i = 0; i < pageSize; i++)
 		{
+			itemUIs[i].gameObject.SetActive(true);
 			itemUIs[i].updateInfo(
 				Bag.bag_ins.GetItemSprite(start + i),
 				Bag.bag_ins.GetItemName(start + i),
@@ -122,6 +126,11 @@ public class BagPanelController : MonoBehaviour
 				Bag.bag_ins.GetItemCount(start + i)
 			);
 			itemUIs[i].redraw();
+		}
+
+		for(int i = 0; i < maxPageSize; i++)
+		{
+			itemUIs[i].gameObject.SetActive(false);
 		}
 	}
 

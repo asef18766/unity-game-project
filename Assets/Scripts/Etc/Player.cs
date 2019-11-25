@@ -133,8 +133,9 @@ public class Player : Entity
 		// open item menu
 		if(Input.GetKeyDown(KeyCode.I))
 		{
-			GameObject canvas = GameObject.Find("Canvas");
+			GameObject canvas = GameObject.Find("/Canvas");
 			BagPanelController controller = Instantiate(bagPanel, Vector3.zero, Quaternion.identity, canvas.transform).GetComponent<BagPanelController>();
+			controller.transform.localPosition = Vector3.zero;
 			controller.setupPlayer(this);
 			gameObject.SetActive(false);
 		}
