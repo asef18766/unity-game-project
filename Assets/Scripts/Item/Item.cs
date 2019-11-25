@@ -53,7 +53,7 @@ public class Item : MonoBehaviour {
 	}
 	public bool isUsable(){ return usages.Count!=0; }
 
-	public void use_item(ItemEvent e)
+	public void useItem(ItemEvent e)
 	{
 		foreach(I_ItemUsage usage in usages.FindAll( (u)=>{return u.itemEvent==e;} ))
 			usage.use();

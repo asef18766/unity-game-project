@@ -87,7 +87,7 @@ public class ItemCount
 			return false;
 		}
 
-		item.use_item(e);
+		item.useItem(e);
 		count--;
 
 		// TODO: item empty event
