@@ -18,7 +18,7 @@ public class Bag : MonoBehaviour
 		id_controller=ItemInstanceManager.Get_Id_Manager_Instance();
 		foreach(var i in content)
 		{
-			Debug.Log("Item ID:"+i.id.ToString()+" count:"+i.count.ToString());
+			Debug.Log("Item ID:"+i.id+" count:"+i.count);
 			i.init();
 		}
 	}
