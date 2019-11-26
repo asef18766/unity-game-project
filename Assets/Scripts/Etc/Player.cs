@@ -2,6 +2,8 @@ using System;
 using UnityEngine;
 public class Player : Entity
 {
+	public GameObject bagPanel;
+
 	#region walking_behavior
 
 	public enum WalkDir { UP, DOWN, LEFT, RIGHT }
@@ -127,5 +129,15 @@ public class Player : Entity
 	{
 		move(playerController());
 		spiriteUpdate();
+
+		// open item menu
+		if(Input.GetKeyDown(KeyCode.I))
+		{
+			GameObject canvas = GameObject.Find("/Canvas");
+			BagPanelController controller = Instantiate(bagPanel, Vector3.zero, Quaternion.identity, canvas.transform).GetComponent<BagPanelController>();
+			controller.transform.localPosition = Vector3.zero;
+			controller.setupPlayer(this);
+			gameObject.SetActive(false);
+		}
 	}
 }

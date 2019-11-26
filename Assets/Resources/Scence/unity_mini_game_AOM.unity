@@ -260,6 +260,12 @@ Prefab:
       propertyPath: detect_radius
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 114461457559439852, guid: dea6f2c4bbf3d1d4097146687ba2663c,
+        type: 2}
+      propertyPath: bagPanel
+      value: 
+      objectReference: {fileID: 1409662707572722, guid: f98841fc0d513014a97be91d0a1d4f50,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 61285517594733878, guid: dea6f2c4bbf3d1d4097146687ba2663c, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: dea6f2c4bbf3d1d4097146687ba2663c, type: 2}
