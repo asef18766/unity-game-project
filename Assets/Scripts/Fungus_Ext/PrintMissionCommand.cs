@@ -38,8 +38,7 @@ namespace Fungus
 			foreach(var i in dest)
 			{
 				i.check_pre_request();
-				if(i.cur_state==Mission.MissionState.Locked)
-					continue;
+				
 				switch(i.cur_state)
 				{
 					case Mission.MissionState.UnLocked:
