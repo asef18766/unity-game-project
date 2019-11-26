@@ -6,10 +6,11 @@ WIP~~目前只是framework
 
 ## ToDoList
 1. 在 fungus 的 On Going 底下，用出一個可以分辨是否有完成任務需求的分支功能
-2. 增加 mission 的 requirment：送東西給其他NPC來完成任務
-3. add feature
-4. fix bug(s?)
-5. optimize structure
+2. 用個遊戲剛開始的序曲，用 fungus 來實現
+3. 增加 mission 的 requirment：送東西給其他NPC來完成任務
+4. add feature
+5. fix bug(s?)
+6. optimize structure
 
 
 
