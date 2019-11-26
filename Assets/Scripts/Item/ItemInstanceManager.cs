@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-[CreateAssetMenu(menuName= "Items/Create Item Manager")]
-public class ItemInstanceManager:ScriptableObject
+public class ItemInstanceManager : MonoBehaviour
 {
     [SerializeField]ItemInstanceManager _m_instance;
     static ItemInstanceManager m_instance=null;
@@ -9,7 +8,7 @@ public class ItemInstanceManager:ScriptableObject
     {
         return m_instance;
     }
-    void OnEnable()
+    void Awake()
     {
         m_instance=_m_instance;
     }

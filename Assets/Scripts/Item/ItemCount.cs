@@ -25,6 +25,13 @@ public class ItemCount
 		count=m_count;
 		item=id_controller.GetItemById(id);
 	}
+	public ItemCount()
+	{
+		id_controller=ItemInstanceManager.Get_Id_Manager_Instance();
+		id=0;
+		count=0;
+		item=id_controller.GetItemById(id);
+	}
 	public const int MAX_COUNT = 99;
 	private static ItemInstanceManager id_controller=ItemInstanceManager.Get_Id_Manager_Instance();
 	[SerializeField]public int count;

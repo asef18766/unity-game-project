@@ -1,10 +1,9 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 [System.Serializable]
-[CreateAssetMenu(menuName = "Items/Create Bag")]
-public class Bag : ScriptableObject
+public class Bag : MonoBehaviour
 {
 	[SerializeField] Bag _bag_ins;
 	public static Bag bag_ins;
@@ -13,15 +12,14 @@ public class Bag : ScriptableObject
 
 	public List<ItemCount> content;
 
-	void OnEnable()
+	void Start()
 	{
 		bag_ins=_bag_ins;
 		id_controller=ItemInstanceManager.Get_Id_Manager_Instance();
 		foreach(var i in content)
-			i.init();
-		if(Bag.bag_ins==null)
 		{
-			Debug.Log("can not find bag ins");
+			Debug.Log("Item ID:"+i.id.ToString()+" count:"+i.count.ToString());
+			i.init();
 		}
 	}
 	public List<ItemCount> getItemList()
