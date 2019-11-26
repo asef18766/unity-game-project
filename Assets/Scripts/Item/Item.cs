@@ -32,7 +32,7 @@ public class Item : MonoBehaviour {
 	[SerializeField] string item_name;
 
 	[SerializeField][TextArea] string help_text;
-	Sprite item_texture;
+	[SerializeField] Sprite item_texture;
 	public string GetItemName()
 	{
 		return item_name;
