@@ -9,7 +9,7 @@ public class ItemReward : I_Reward
             return false;
         
         foreach(var i in reward)
-            if(! Bag.bag_ins.addItem(i))
+            if(! Bag.bag_ins.updateItemByDelta(i))
                 return false;
         
         return true;

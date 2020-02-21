@@ -15,11 +15,11 @@ public class Bag : ScriptableObject
 
 	void OnEnable()
 	{
-		bag_ins=_bag_ins;
-		id_controller=ItemInstanceManager.Get_Id_Manager_Instance();
+		bag_ins = _bag_ins;
+		id_controller = ItemInstanceManager.Get_Id_Manager_Instance();
 		foreach(var i in content)
 			i.init();
-		if(Bag.bag_ins==null)
+		if(Bag.bag_ins == null)
 		{
 			Debug.Log("can not find bag ins");
 		}
@@ -36,15 +36,23 @@ public class Bag : ScriptableObject
 	{
 		return content.FindIndex(x => x.id == req.id && x.count <= req.count);
 	}
-	public bool removeItem(ItemCount req)
+
+	private bool checkValid()
 	{
-		int index = checkItem(req);
-
-		if(index == -1)
-			return false;
-
-		return content[index].updateCount(content[index].count - req.count);
+		return false;
 	}
+
+	public bool updateItemByDelta(ItemCount req)
+	{
+		int index = checkItem(req.id);
+		if(index != -1)
+			return content[index].updateCountByDelta(req.count);
+
+		content.Add(req);
+		return true;
+	}
+
+	// set item to desired count
 	public bool updateItem(ItemCount req)
 	{
 		int index = checkItem(req.id);
@@ -54,39 +62,13 @@ public class Bag : ScriptableObject
 		content.Add(req);
 		return true;
 	}
-	// modify n items into bag
-	public bool updateItem(Item other, int n)
-	{
-		int item_id = id_controller.GetIdByItem(other);
-		int index = checkItem(item_id);
-		if(index != -1)
-			return content[index].updateCount(n);
-		else
-		{
-			content.Add(new ItemCount(item_id, n));
-			return true;
-		}
-	}
-	public bool addItem(ItemCount it)
-	{
-		int index = checkItem(it.id);
-		if(index != -1)
-		{
-			do
-			{
-				bool NotOverStack = content[index].updateCount(content[index].count + it.count);
-				if(NotOverStack)
-					return true;
-				index = content.FindIndex(index, x => x.id == it.id);
-			} while(index != -1);
-		}
 
-		if(content.Count == MAX_ITEM_AMOUNT)
-			return false;
-
-		content.Add(it);
-		return true;
+	// transfer item to other bag by delta
+	public bool transferItem(Bag other, ItemCount ic)
+	{
+		return other.updateItemByDelta(ic);
 	}
+
 	public Sprite GetItemSprite(int index)
 	{
 		if(content.Count <= index && index < 0)

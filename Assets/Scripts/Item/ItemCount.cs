@@ -25,7 +25,6 @@ public class ItemCount
 		count=m_count;
 		item=id_controller.GetItemById(id);
 	}
-	public const int MAX_COUNT = 99;
 	private static ItemInstanceManager id_controller=ItemInstanceManager.Get_Id_Manager_Instance();
 	[SerializeField]public int count;
 	[SerializeField]public int id;
@@ -95,15 +94,21 @@ public class ItemCount
 		return true;
 	}
 
-	public bool updateCount(int delta)
+	// modify item count by delta value
+	public bool updateCountByDelta(int delta)
 	{
 		int newCount = count + delta;
 
 		// invalid count
-		if(newCount < 0 || newCount > MAX_COUNT) return false;
+		if(newCount < 0) return false;
 
 		// update
 		count = newCount;
 		return true;
+	}
+
+	public bool updateCount(int cnt)
+	{
+		return updateCountByDelta(cnt - count);
 	}
 }
