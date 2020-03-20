@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [System.Serializable]
@@ -87,7 +87,7 @@ public class ItemCount
 			return false;
 		}
 
-		item.use_item(e);
+		item.useItem(e);
 		count--;
 
 		// TODO: item empty event

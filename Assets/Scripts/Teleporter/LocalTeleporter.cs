@@ -8,13 +8,8 @@ public class LocalTeleporter : BaseTeleporter
 	[Tooltip("Destination (LocalTeleporter)")]
 	public LocalTeleporter des;
 
-	Vector3 desPos;
-	Vector3 locPos;
-
 	void Start()
 	{
-		this.desPos = this.des.transform.position;
-		this.locPos = transform.position;
 	}
 
 	void Update()
@@ -30,7 +25,7 @@ public class LocalTeleporter : BaseTeleporter
 		// set all touched entity to destination
 		for(int u = 0; u != tar.Length; ++u)
 		{
-			tar[u].transform.position = this.desPos;
+			tar[u].transform.position = this.des.transform.position;
 		}
 
 		yield return new WaitForSeconds(this.delayTime);
@@ -40,7 +35,7 @@ public class LocalTeleporter : BaseTeleporter
 	// return whether player touch this teleporter
 	new bool detect()
 	{
-		tar = Collide.AreaGetCollideByTag(this.locPos, this.detectRadius, Collide.Method.Circle, "Player");
+		tar = Collide.AreaGetCollideByTag(this.transform.position, this.detectRadius, Collide.Method.Circle, "Player");
 
 		if(tar.Length != 0)
 			return true;
