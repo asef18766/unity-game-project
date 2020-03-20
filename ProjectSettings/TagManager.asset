@@ -9,6 +9,7 @@ TagManager:
   - building
   - Npc
   - item
+  - log
   layers:
   - Default
   - TransparentFX
