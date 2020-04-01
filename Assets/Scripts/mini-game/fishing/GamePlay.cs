@@ -28,16 +28,14 @@ namespace MiniGame.Fishing
 		private Fish fish;
 		// the fish appear or not
 		private bool appear { get { return this.fish; } }
-		// duration for this fish
-		private float currDuration
+		// remain time before the fish dive into water (ratio)
+		private float remainTime
 		{
 			get
 			{
 				return this.fish ? this.fish.duration : 0;
 			}
 		}
-		// remain time before the fish dive into water
-		private float remainTime = 0;
 
 		private void Start()
 		{
@@ -45,17 +43,23 @@ namespace MiniGame.Fishing
 			StartCoroutine(this.waitForEnd());
 		}
 
-		private void Update()
+		// private void Update()
+		// {
+		// 	// update remain time
+		// 	if(this.remainTime >= 0)
+		// 	{
+		// 		this.remainTime -= Time.deltaTime;
+		// 		if(this.remainTime <= 0)
+		// 		{
+		// 			this.removeFish();
+		// 		}
+		// 	}
+		// }
+
+		private IEnumerator setInterval(float waitFor, System.Action callback)
 		{
-			// update remain time
-			if(this.remainTime > 0)
-			{
-				this.remainTime -= Time.deltaTime;
-				if(this.remainTime < 0)
-				{
-					this.fish = null;
-				}
-			}
+			yield return new WaitForSeconds(waitFor);
+			callback();
 		}
 
 		// is that a fish appear?
@@ -63,7 +67,7 @@ namespace MiniGame.Fishing
 		private Fish chooseFish()
 		{
 			float r = Random.Range(0, 1f);
-			// a fish!
+			// a new fish coming, cheers!
 			if(r < 0.2f)
 			{
 				GameObject go = Instantiate(this.fishPrefab, this.lake);
@@ -73,15 +77,22 @@ namespace MiniGame.Fishing
 				// update fish data
 				Fish f = go.GetComponent<Fish>();
 				f.fishData = fd;
+				StartCoroutine(this.setInterval(f.duration, this.removeFish));
 				return f;
 			}
 			return null;
 		}
 
-		// a new fish coming, cheers!
-		private void newFish(Fish fish)
+		private void removeFish()
 		{
-			this.remainTime = this.fish.duration;
+			if(!this.fish)
+			{
+				Debug.LogError("Call `removeFish` when fish haven't appeared!");
+				return;
+			}
+			this.power = 0;
+			Destroy(this.fish.gameObject);
+			this.fish = null;
 		}
 
 		private IEnumerator waitForEnd()
@@ -115,7 +126,8 @@ namespace MiniGame.Fishing
 						// you got a fresh fish, bro
 						this.player.GetFish(this.fish);
 						// good bye
-						this.fish = null;
+						this.removeFish();
+						yield return new WaitForSeconds(1);
 					}
 					yield return true;
 				}
