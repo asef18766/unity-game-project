@@ -33,7 +33,7 @@ namespace MiniGame.Fishing
 		[SerializeField]
 		private Player player;
 		// current fish
-		private Fish fish;
+		public Fish fish { get; private set; }
 		// the fish appear or not
 		private bool appear { get { return this.fish; } }
 		// remain time before the fish dive into water (ratio)

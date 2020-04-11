@@ -404,10 +404,10 @@ RectTransform:
   m_Father: {fileID: 2139813549}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 50.5, y: 0}
-  m_SizeDelta: {x: 100, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1371923901
 MonoBehaviour:
@@ -452,7 +452,6 @@ GameObject:
   - component: {fileID: 1438469939}
   - component: {fileID: 1438469941}
   - component: {fileID: 1438469940}
-  - component: {fileID: 1438469942}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -519,19 +518,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1438469938}
---- !u!114 &1438469942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1438469938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e898805bf2f6d3e498be5ce368b51594, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gamePlay: {fileID: 356663885}
-  progressBar: {fileID: 1484378023}
 --- !u!1 &1484378021
 GameObject:
   m_ObjectHideFlags: 0
@@ -816,8 +802,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2139813549}
+  - component: {fileID: 2139813550}
   m_Layer: 5
-  m_Name: Power (2)
+  m_Name: Power
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -845,3 +832,18 @@ RectTransform:
   m_AnchoredPosition: {x: 512, y: -354}
   m_SizeDelta: {x: 443, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2139813550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2139813548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e898805bf2f6d3e498be5ce368b51594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gamePlay: {fileID: 356663885}
+  progressBar: {fileID: 1484378023}
+  targetArea: {fileID: 1371923901}
+  text: {fileID: 1438469940}
