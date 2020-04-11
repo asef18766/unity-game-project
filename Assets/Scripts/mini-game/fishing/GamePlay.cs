@@ -11,13 +11,21 @@ namespace MiniGame.Fishing
 		public float upperBound;
 		// the delta of power for each second
 		public float powerDelta;
+		public float power { get; private set; }
+		public float PowerRatio
+		{
+			get
+			{
+				return this.power / this.upperBound;
+			}
+		}
+
 		[SerializeField]
 		private float highRST;
 		[SerializeField]
 		private float lowRST;
 		public GameObject fishPrefab;
 		public FishData[] fishs;
-		public float power { get; private set; }
 		// where the fish appear
 		[SerializeField]
 		private Transform lake;
@@ -29,13 +37,14 @@ namespace MiniGame.Fishing
 		// the fish appear or not
 		private bool appear { get { return this.fish; } }
 		// remain time before the fish dive into water (ratio)
-		private float remainTime
+		public float RemainTimeRatio
 		{
 			get
 			{
-				return this.fish ? this.fish.duration : 0;
+				return this.fish ? Mathf.Clamp(this.remainTime / this.fish.duration, 0f, 1f) : 0;
 			}
 		}
+		private float remainTime;
 
 		private void Start()
 		{
@@ -62,9 +71,22 @@ namespace MiniGame.Fishing
 			callback();
 		}
 
+		// record the remain time when fish disappear
+		private IEnumerator timingFish()
+		{
+			this.remainTime = this.fish.duration;
+			while(this.remainTime > 0)
+			{
+				this.remainTime -= Time.deltaTime;
+				yield return null;
+			}
+			this.remainTime = 0;
+			yield return null;
+		}
+
 		// is that a fish appear?
 		// if yes, update the related variable
-		private Fish chooseFish()
+		private void chooseFish()
 		{
 			float r = Random.Range(0, 1f);
 			// a new fish coming, cheers!
@@ -77,10 +99,11 @@ namespace MiniGame.Fishing
 				// update fish data
 				Fish f = go.GetComponent<Fish>();
 				f.fishData = fd;
+				// set fish instance
+				this.fish = f;
 				StartCoroutine(this.setInterval(f.duration, this.removeFish));
-				return f;
+				StartCoroutine(this.timingFish());
 			}
-			return null;
 		}
 
 		private void removeFish()
@@ -105,7 +128,6 @@ namespace MiniGame.Fishing
 		{
 			while(true)
 			{
-
 				if(this.appear)
 				{
 					// detect player input, update power bar
@@ -134,7 +156,7 @@ namespace MiniGame.Fishing
 				else
 				{
 					// fish, fish, where are you?
-					this.fish = this.chooseFish();
+					this.chooseFish();
 					// next round
 					// if fish not appears, wait for 1 second
 					// else no wait
