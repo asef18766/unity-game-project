@@ -1,12 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 namespace LogCutter
 {
-	public class Log : IDestroyable
-	{
-		[SerializeField] Sprite destroyed;
+    public class Bogay : IDestroyable
+    {
+        [SerializeField] Sprite destroyed;
 		enum LogState
 		{
 			Normal,
@@ -29,8 +26,12 @@ namespace LogCutter
 		}
 		public override void Cut()
 		{
+            if(logState == LogState.Destroyed)
+                return;
 			logState = LogState.Destroyed;
-			gameController.StartCoroutine("addScore");
+            if(gameController == null)
+                print("game controller is null");
+			gameController.StartCoroutine("minusScore");
 		}
-	}
+    }
 }

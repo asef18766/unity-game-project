@@ -10,6 +10,7 @@ TagManager:
   - Npc
   - item
   - log
+  - destroyable
   layers:
   - Default
   - TransparentFX
